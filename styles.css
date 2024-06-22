@@ -30,6 +30,7 @@ body {
     margin: 5px;
     background-color: #1b5e20;
     border-radius: 1em;
+    cursor: pointer;
 }
 
 /* Red suit subclass */
