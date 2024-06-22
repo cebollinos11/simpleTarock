@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #2e7d32;
+    color: #fff;
+}
+
+#game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hand {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.card {
+    width: 50px;
+    height: 75px;
+    border: 1px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    background-color: #1b5e20;
+    border-radius: 1em;
+}
+
+/* Red suit subclass */
+.red {
+    background-color: #d32f2f; /* Red background */
+}
+
+/* Black suit subclass */
+.black {
+    background-color: #424242; /* Dark gray background */
+}
+
+#game-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#deal-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #388e3c;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#deal-button:hover {
+    background-color: #2e7d32;
+}
