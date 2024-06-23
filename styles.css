@@ -7,6 +7,7 @@ body {
     margin: 0;
     background-color: #2e7d32;
     color: #fff;
+   
 }
 
 #game {
@@ -62,3 +63,4 @@ body {
 #deal-button:hover {
     background-color: #2e7d32;
 }
+
