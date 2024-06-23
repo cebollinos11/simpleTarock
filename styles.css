@@ -33,13 +33,21 @@ html,body,#wrapper {
     background-color: #25915e; /* Example color */
     height: 30%;
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
 }
 
-.yellow-square {
-    background-color: yellow; /* Set background color to yellow */
-    width: 50px; /* Set width of the square */
-    height: 50px; /* Set height of the square */
-    position: absolute; /* Position the square absolutely */
-    
-    transform: translate(-50%, -50%); /* Offset the square to be perfectly centered */
+.card {
+    width: 10%; /* Set width to 8% of viewport width */
+    aspect-ratio: 2/3;
+    border: 1px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: -5px;
+    background-color: #1b5e20;
+    border-radius: 0.5em;
+    cursor: pointer;
 }
