@@ -94,3 +94,67 @@ html,body,#wrapper {
         width: 40px; /* Width for mobile */
     }
 }
+
+.card.animate-top {
+    animation: animate-from-top 1s ease-out;
+    position: fixed;
+}
+
+.card.animate-left {
+    animation: animate-from-left 1s ease-out;
+    position: fixed;
+}
+
+.card.animate-right {
+    animation: animate-from-right 1s ease-out;
+    position: fixed;
+}
+
+.card.animate-bottom {
+    animation: animate-from-bottom 1s ease-out;
+    position: fixed;
+}
+
+@keyframes animate-from-top {
+    0% {
+        top: -200px;
+        opacity: 0;
+    }
+    100% {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes animate-from-left {
+    0% {
+        left: -200px;
+        opacity: 0;
+    }
+    100% {
+        left: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes animate-from-bottom {
+    0% {
+        top: 200px;
+        opacity: 0;
+    }
+    100% {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes animate-from-right {
+    0% {
+        left: 200px;
+        opacity: 0;
+    }
+    100% {
+        left: 0;
+        opacity: 1;
+    }
+}
