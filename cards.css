@@ -56,9 +56,9 @@
 
 @keyframes animate-from-top {
     0% {
-        top: -200px;
+        top: -20px;
         opacity: 0.5;
-        transform: rotate(180deg);
+        transform: rotate(0deg);
     }
     80%{
         transform: rotate(0deg);
@@ -71,9 +71,9 @@
 
 @keyframes animate-from-left {
     0% {
-        left: -200px;
+        left: -20px;
         opacity: 0.5;
-        transform: rotate(180deg);
+        transform: rotate(0deg);
     }
     80%{
         transform: rotate(0deg);
@@ -87,9 +87,9 @@
 
 @keyframes animate-from-bottom {
     0% {
-        top: 200px;
+        top: 20px;
         opacity: 0.5;
-        transform: rotate(180deg);
+        transform: rotate(0deg);
     }
     80%{
         transform: rotate(0deg);
