@@ -29,7 +29,8 @@ html,body,#wrapper {
     position: absolute;
     top: 40%; /* Center vertically in the center-area */
     left: 10%; /* Center horizontally in the center-area */
-    visibility: hidden;
+    display: flex;
+    justify-content: center;
 
 }
 

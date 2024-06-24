@@ -7,6 +7,7 @@ Hand:
 
 Dog:
     Click to put card in hand
+    Click to confirm changes
 
 Bidding:
     Commit to a Bid
@@ -24,6 +25,7 @@ End oF game
 
 WAITING_TO_START
 BIDDING_
+DOG_
 PLAY_BASIC_GAME
 REVIEW_SCORE_ROUND
 REVIEW_SCORE_GAME
