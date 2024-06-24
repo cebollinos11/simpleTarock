@@ -130,3 +130,7 @@
         width: 40px; /* Width for mobile */
     }
 }
+
+.card > img{
+    width: 100%;
+}
