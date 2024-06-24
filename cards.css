@@ -120,7 +120,7 @@
 
 @media (min-width: 468px) {
     .card {
-        width: 70px; /* Width for desktop */
+        width: 50px; /* Width for desktop */
     }
 }
 
@@ -133,4 +133,10 @@
 
 .card > img{
     width: 100%;
+}
+
+#player-hand >.card > img:hover
+{
+    top: -10px;
+    position: relative;
 }

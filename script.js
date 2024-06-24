@@ -54,8 +54,17 @@ function renderPlayerHand() {
         const cardElement = document.createElement('div');
         cardElement.classList.add('card');
         cardElement.classList.add(cardUtils.suitImage[card.suit].color);
-        cardElement.innerText = `${card.rank}\n${ cardUtils.suitImage[card.suit].symbol}`;
-        cardElement.addEventListener('click', () => tradeWithDog(index));
+        //cardElement.innerText = `${card.rank}\n${ cardUtils.suitImage[card.suit].symbol}`;
+        //cardElement.addEventListener('click', () => tradeWithDog(index));
+        
+        // Create the img element
+        var imgElement = document.createElement('img');
+        imgElement.src = `cards/${card.rank}${ cardUtils.suitImage[card.suit].imageCode}.svg`;
+
+        // Append the img element to the card div
+        cardElement.appendChild(imgElement);
+
+        
         playerHandElement.appendChild(cardElement);
     });
 }
@@ -112,13 +121,10 @@ function renderDog() {
         }
 }
 
-// Event listener for dealing cards
-dealButton.addEventListener('click', () => {
-    initializeDeck();
-    dealCards();
-});
+
 
 // Initial render
 initializeDeck();
+dealCards();
 renderPlayerHand();
 renderDog();

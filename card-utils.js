@@ -23,10 +23,10 @@ const rankOrder = {
 }
 
 export const suitImage = {
-    "spades": { symbol: "♠", color: "black" },
-    "hearts": { symbol: "♥", color: "red" },
-    "diamonds": { symbol: "♦", color: "red" },
-    "clubs": { symbol: "♣", color: "black" } 
+    "spades":   { symbol: "♠", color: "black" , imageCode:'S' },
+    "hearts":   { symbol: "♥", color: "red", imageCode:'H'},
+    "diamonds": { symbol: "♦", color: "red", imageCode:'D'},
+    "clubs":    { symbol: "♣", color: "black" , imageCode:'C'} 
 };
 
 
