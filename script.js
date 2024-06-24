@@ -66,22 +66,25 @@ function renderCard(card)
 }
 
 // Render player's hand
-function renderPlayerHand() {
+function renderPlayerHand(lastUpdated = null) {
     cardUtils.sortHand();
     playerHandElement.innerHTML = '';
     playerHand.forEach((card, index) => {
         
         const cardElement = renderCard(card);
-        //cardElement.addEventListener('click', () => tradeWithDog(index));
+        cardElement.addEventListener('click', () => tradeWithDog(index));
         playerHandElement.appendChild(cardElement);
-
+        if(lastUpdated === card)
+            {
+                cardElement.classList.add('animate-top')                   
+            }
         
     });
 }
 
 
 // Render played cards
-function renderDog() {
+function renderDog(lastUpdated = null) {
 
     const dogCardsNumber = 4;
 
@@ -92,7 +95,11 @@ function renderDog() {
         // cardElement.classList.add('card');
         // cardElement.classList.add(cardUtils.suitImage[card.suit].color);
         // cardElement.innerText = `${card.rank}\n${ cardUtils.suitImage[card.suit].symbol}`;
-        // //cardElement.addEventListener('click', () => tradeWithHand(index));
+        if(lastUpdated === card)
+            {
+                cardElement.classList.add('animate-bottom')                   
+            }
+        cardElement.addEventListener('click', () => tradeWithHand(index));
         dogCardsElement.appendChild(cardElement);
     });
 
@@ -121,7 +128,7 @@ function renderDog() {
 function tradeWithDog(index) {
     const playedCard = playerHand.splice(index, 1)[0];
     dogHand.push(playedCard);
-    renderDog();
+    renderDog(playedCard);
     renderPlayerHand();
 }
 
@@ -129,8 +136,9 @@ function tradeWithDog(index) {
 function tradeWithHand(index) {
     const playedCard = dogHand.splice(index, 1)[0];
     playerHand.push(playedCard);
+    playerHand = cardUtils.sortCardsBySuit(playerHand);
     renderDog();
-    renderPlayerHand();
+    renderPlayerHand(playedCard);
 }
 
 // Initial render

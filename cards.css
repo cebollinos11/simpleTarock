@@ -35,22 +35,22 @@
 
 .card.animate-top {
     animation: animate-from-top 0.3s ease-out;
-    position: fixed;
+    position: relative;
 }
 
 .card.animate-left {
     animation: animate-from-left 0.3s ease-out;
-    position: fixed;
+    position: relative;
 }
 
 .card.animate-right {
     animation: animate-from-right 0.3s ease-out;
-    position: fixed;
+    position: relative;
 }
 
 .card.animate-bottom {
     animation: animate-from-bottom 0.3s ease-out;
-    position: fixed;
+    position: relative;
 }
 
 
