@@ -1,0 +1,30 @@
+design.txt
+
+== UI clicks == 
+Hand:
+    Click to put card in dog
+    Click to play a card
+
+Dog:
+    Click to put card in hand
+
+Bidding:
+    Commit to a Bid
+    Toggle last 3 rounds
+
+End of round - Scoring
+    Continue
+    Quit and start again
+
+End oF game 
+    Start a new game
+
+
+== Game states ==
+
+WAITING_TO_START
+BIDDING_
+PLAY_BASIC_GAME
+REVIEW_SCORE_ROUND
+REVIEW_SCORE_GAME
+
