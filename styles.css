@@ -91,6 +91,6 @@ html,body,#wrapper {
 /* Mobile styles */
 @media (max-width: 467px) {
     .card {
-        width: 12%; /* Width for mobile */
+        width: 40px; /* Width for mobile */
     }
 }
