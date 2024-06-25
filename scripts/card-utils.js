@@ -36,7 +36,3 @@ export const suitImage = {
     });
   }
 
-export function sortHand()
-{
-    console.log("yo");
-}
