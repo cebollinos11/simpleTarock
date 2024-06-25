@@ -137,6 +137,11 @@
 
 #player-hand >.card > img:hover
 {
-    top: -10px;
+    top: -5px;
+    position: relative;
+}
+
+#dog-hand >.card>img:hover{
+    top:-5px;
     position: relative;
 }
