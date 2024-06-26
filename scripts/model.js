@@ -21,16 +21,9 @@ class Player {
      this.isAi = isAi;
      this.hand = [];
    }
- }
+}
 
 let gameState = new CardGame(4);
-
-
-let playerHand = [];
-let dogHand = [];
-
-
-
 
 const suits = ['hearts', 'diamonds', 'clubs', 'spades'];
 const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
@@ -57,7 +50,7 @@ function shuffleDeck(deck) {
 function dealCards() {
 
     const dogSize = 4;
-    const handsize = Math.floor(gameState.deck.length / gameState.numPlayers - dogSize);
+    const handsize = Math.floor((gameState.deck.length- dogSize) / gameState.numPlayers );
     for (let index = 0; index < gameState.players.length; index++) {
         let playerHand = gameState.deck.slice(0, handsize);
         playerHand = cardUtils.sortCardsBySuit(playerHand);
