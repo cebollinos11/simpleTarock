@@ -23,6 +23,13 @@ game.dealCards();
 // Initial render
 //_model.initializeDeck();
 //_model.dealCards();
+game.randomizeDealer();
+
+let waitingForPlayer = false;
+while(waitingForPlayer==false)
+    {
+        waitingForPlayer = game.givePriority();
+    }
 _view.renderPlayerHand(game.getPlayerHand(), tradeWithDog);
 _view.renderDog(game.getDogHand(), tradeWithHand);
 

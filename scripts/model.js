@@ -13,13 +13,56 @@ class CardGame
         }
         this.deck = [];
         this.dogHand = [];
+        this.currentPlayerIndex = 0;
+        this.currentTrick = []
     }
+    randomizeDealer()
+    {
+        this.currentPlayerIndex = 1;
+    }
+    givePriority()
+    {
+        if(this.players[this.currentPlayerIndex].isAi)
+            {
+                //handle ai,
+                const chosenCard = this.aiSelectCard()
+                console.log(`player ${this.currentPlayerIndex} plays ${chosenCard.toString()} `)                
+                return false;
+            }
+        else
+        {
+            //handle human player
+            return true;
+        }
+    }
+
+
+    //todo, proper AI
+    aiSelectCard()
+    {
+        let card = this.players[this.currentPlayerIndex].hand[0];
+        this.playCard(card);
+        return card;
+    }
+
+    playCard(chosenCard)
+    {        
+        this.currentTrick.push(chosenCard)        
+        const index = this.players[this.currentPlayerIndex].hand.indexOf(chosenCard);
+        if (index !== -1) {
+            this.players[this.currentPlayerIndex].hand.splice(index, 1);
+        }  
+        this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
+        console.log("Priority -> "+ this.currentPlayerIndex );
+
+    }
+
 
     initializeDeck() {
         let deck = [];
         suits.forEach(suit => {
             ranks.forEach(rank => {
-                deck.push({ suit, rank });
+                deck.push( new Card(suit,rank));
             });
         });
     
@@ -71,6 +114,19 @@ class Player {
    }
 }
 
+
+class Card{
+    constructor(suit,rank)
+    {
+        this.suit=suit;
+        this.rank=rank;
+    }
+
+    toString()
+    {
+        return this.rank+this.suit;
+    }
+}
 
 const suits = ['hearts', 'diamonds', 'clubs', 'spades'];
 const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
