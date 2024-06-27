@@ -14,11 +14,13 @@ class CardGame
         this.deck = [];
         this.dogHand = [];
         this.currentPlayerIndex = 0;
+        this.currentTrickStarterIndex = 0;
         this.currentTrick = []
     }
     randomizeDealer()
     {
-        this.currentPlayerIndex = 1;
+        this.currentPlayerIndex = 2;
+        this.currentTrickStarterIndex = 2;
     }
     givePriority()
     {
@@ -26,25 +28,26 @@ class CardGame
             {
                 //handle ai,
                 const chosenCard = this.aiSelectCard()
-                console.log(`player ${this.currentPlayerIndex} plays ${chosenCard.toString()} `)                
                 return false;
             }
-        else
-        {
-            //handle human player
-            return true;
+            else
+            {
+                //handle human player
+                return true;
+            }
         }
-    }
-
-
-    //todo, proper AI
-    aiSelectCard()
-    {
-        let card = this.players[this.currentPlayerIndex].hand[0];
+        
+        
+        
+        
+        //todo, proper AI
+        aiSelectCard()
+        {
+            let card = this.players[this.currentPlayerIndex].hand[0];
         this.playCard(card);
         return card;
     }
-
+    
     playCard(chosenCard)
     {        
         this.currentTrick.push(chosenCard)        
@@ -52,6 +55,7 @@ class CardGame
         if (index !== -1) {
             this.players[this.currentPlayerIndex].hand.splice(index, 1);
         }  
+        console.log(`player ${this.currentPlayerIndex} plays ${chosenCard.toString()} `)                
         this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
         console.log("Priority -> "+ this.currentPlayerIndex );
 

@@ -29,6 +29,16 @@ let waitingForPlayer = false;
 while(waitingForPlayer==false)
     {
         waitingForPlayer = game.givePriority();
+        //render trick
+        if(waitingForPlayer == true)
+            {
+                //enable the view so user can pick a card
+            }
+        else
+            {
+                //show trick because AI played
+                _view.renderTrick(game.currentTrick,game.currentTrickStarterIndex);
+            }
     }
 _view.renderPlayerHand(game.getPlayerHand(), tradeWithDog);
 _view.renderDog(game.getDogHand(), tradeWithHand);

@@ -59,7 +59,20 @@ function renderDog(dogHand, tradeWithHand, lastUpdated = null) {
     }
 }
 
+//_view.renderTrick(game.currentTrick,true);
+function renderTrick(currentTrick,whoStarted)
+{
+    //clean tricks
+
+    currentTrick.forEach(card => {
+        
+        console.log("show card "+card.toString())
+
+    });
+}
+
 export {
     renderPlayerHand,
-    renderDog
+    renderDog,
+    renderTrick
 };
