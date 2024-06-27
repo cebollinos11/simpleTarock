@@ -31,6 +31,7 @@ html,body,#wrapper {
     left: 10%; /* Center horizontally in the center-area */
     display: flex;
     justify-content: center;
+    visibility: hidden;
 
 }
 

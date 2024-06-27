@@ -35,15 +35,18 @@ class CardGame
                 //handle human player
                 return true;
             }
-        }
+    }  
+    
+    getPlayerHand()
+    {
+        return this.players[0].hand;
+    }
         
         
-        
-        
-        //todo, proper AI
-        aiSelectCard()
-        {
-            let card = this.players[this.currentPlayerIndex].hand[0];
+    //todo, proper AI
+    aiSelectCard()
+    {
+        let card = this.players[this.currentPlayerIndex].hand[0];
         this.playCard(card);
         return card;
     }

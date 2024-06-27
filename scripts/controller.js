@@ -16,6 +16,11 @@ function tradeWithHand(index) {
     _view.renderPlayerHand(game.getPlayerHand(), tradeWithDog, card);
 }
 
+function playToTrick(index)
+{
+    game.playCard(game.getPlayerHand()[index]);
+}
+
 
 const game = new _model.CardGame(4);
 game.initializeDeck();
@@ -26,13 +31,15 @@ game.dealCards();
 game.randomizeDealer();
 
 let waitingForPlayer = false;
-while(waitingForPlayer==false)
+while(waitingForPlayer)
     {
         waitingForPlayer = game.givePriority();
         //render trick
         if(waitingForPlayer == true)
             {
                 //enable the view so user can pick a card
+                _view.renderPlayerHand(game.getPlayerHand(), playToTrick);
+                
             }
         else
             {
@@ -40,7 +47,9 @@ while(waitingForPlayer==false)
                 _view.renderTrick(game.currentTrick,game.currentTrickStarterIndex);
             }
     }
-_view.renderPlayerHand(game.getPlayerHand(), tradeWithDog);
-_view.renderDog(game.getDogHand(), tradeWithHand);
+
+console.log("n");
+// _view.renderPlayerHand(game.getPlayerHand(), playToTrick);
+// _view.renderDog(game.getDogHand(), tradeWithHand);
 
 
