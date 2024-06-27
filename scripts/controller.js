@@ -5,20 +5,25 @@ import * as _view from './view.js';
 
 
 function tradeWithDog(index) {
-    const card = _model.tradeCardFromPlayerToDog(index);
-    _view.renderDog(_model.getDogHand(), tradeWithHand, card);
-    _view.renderPlayerHand(_model.getPlayerHand(), tradeWithDog);
+    const card = game.tradeCardFromPlayerToDog(index);
+    _view.renderDog(game.getDogHand(), tradeWithHand, card);
+    _view.renderPlayerHand(game.getPlayerHand(), tradeWithDog);
 }
 
 function tradeWithHand(index) {
-    const card = _model.tradeCardFromDogToPlayer(index);
-    _view.renderDog(_model.getDogHand(), tradeWithHand);
-    _view.renderPlayerHand(_model.getPlayerHand(), tradeWithDog, card);
+    const card = game.tradeCardFromDogToPlayer(index);
+    _view.renderDog(game.getDogHand(), tradeWithHand);
+    _view.renderPlayerHand(game.getPlayerHand(), tradeWithDog, card);
 }
 
 
+const game = new _model.CardGame(4);
+game.initializeDeck();
+game.dealCards();
 // Initial render
-_model.initializeDeck();
-_model.dealCards();
-_view.renderPlayerHand(_model.getPlayerHand(), tradeWithDog);
-_view.renderDog(_model.getDogHand(), tradeWithHand);
+//_model.initializeDeck();
+//_model.dealCards();
+_view.renderPlayerHand(game.getPlayerHand(), tradeWithDog);
+_view.renderDog(game.getDogHand(), tradeWithHand);
+
+

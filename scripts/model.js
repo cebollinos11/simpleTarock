@@ -14,6 +14,54 @@ class CardGame
         this.deck = [];
         this.dogHand = [];
     }
+
+    initializeDeck() {
+        let deck = [];
+        suits.forEach(suit => {
+            ranks.forEach(rank => {
+                deck.push({ suit, rank });
+            });
+        });
+    
+        this.deck = shuffleDeck(deck);
+    }
+
+    dealCards() {
+        const dogSize = 4;
+        const handsize = Math.floor((this.deck.length- dogSize) / this.numPlayers );
+        for (let index = 0; index < this.players.length; index++) {
+            let playerHand = this.deck.slice(0, handsize);
+            playerHand = cardUtils.sortCardsBySuit(playerHand);
+            this.players[index].hand = playerHand;
+            this.deck = this.deck.slice(handsize);       
+        }   
+    
+        this.dogHand = this.deck.slice(0, dogSize);
+        this.dogHand = cardUtils.sortCardsBySuit(this.dogHand);
+        this.deck = this.deck.slice(4);
+        console.log(this);
+    }
+
+    getPlayerHand() {
+        return this.players[0].hand;
+    }
+    
+    getDogHand() {
+        return this.dogHand;
+    }
+
+    tradeCardFromPlayerToDog(index) {
+        const playedCard = this.players[0].hand.splice(index, 1)[0];
+        this.dogHand.push(playedCard);
+        return playedCard;
+    }
+    
+    tradeCardFromDogToPlayer(index) {
+        const playedCard = this.dogHand.splice(index, 1)[0];
+        this.players[0].hand.push(playedCard);
+        this.players[0].handplayerHand = cardUtils.sortCardsBySuit(this.players[0].hand);
+        return playedCard;
+    }
 }
 
 class Player {
@@ -23,21 +71,11 @@ class Player {
    }
 }
 
-let gameState = new CardGame(4);
 
 const suits = ['hearts', 'diamonds', 'clubs', 'spades'];
 const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 
-function initializeDeck() {
-    let deck = [];
-    suits.forEach(suit => {
-        ranks.forEach(rank => {
-            deck.push({ suit, rank });
-        });
-    });
 
-    gameState.deck = shuffleDeck(deck);
-}
 
 function shuffleDeck(deck) {
     for (let i = deck.length - 1; i > 0; i--) {
@@ -47,50 +85,7 @@ function shuffleDeck(deck) {
     return deck;
 }
 
-function dealCards() {
-
-    const dogSize = 4;
-    const handsize = Math.floor((gameState.deck.length- dogSize) / gameState.numPlayers );
-    for (let index = 0; index < gameState.players.length; index++) {
-        let playerHand = gameState.deck.slice(0, handsize);
-        playerHand = cardUtils.sortCardsBySuit(playerHand);
-        gameState.players[index].hand = playerHand;
-        gameState.deck = gameState.deck.slice(handsize);       
-    }   
-
-    gameState.dogHand = gameState.deck.slice(0, dogSize);
-    gameState.dogHand = cardUtils.sortCardsBySuit(gameState.dogHand);
-    gameState.deck = gameState.deck.slice(4);
-    console.log(gameState);
-}
-
-function getPlayerHand() {
-    return gameState.players[0].hand;
-}
-
-function getDogHand() {
-    return gameState.dogHand;
-}
-
-function tradeCardFromPlayerToDog(index) {
-    const playedCard = gameState.players[0].hand.splice(index, 1)[0];
-    gameState.dogHand.push(playedCard);
-    return playedCard;
-}
-
-function tradeCardFromDogToPlayer(index) {
-    const playedCard = gameState.dogHand.splice(index, 1)[0];
-    gameState.players[0].hand.push(playedCard);
-    gameState.players[0].handplayerHand = cardUtils.sortCardsBySuit(gameState.players[0].hand);
-    return playedCard;
-}
-
 export {
-    initializeDeck,
-    shuffleDeck,
-    dealCards,
-    getPlayerHand,
-    getDogHand,
-    tradeCardFromPlayerToDog,
-    tradeCardFromDogToPlayer
+    CardGame,
+    shuffleDeck
 };
