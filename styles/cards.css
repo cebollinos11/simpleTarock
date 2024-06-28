@@ -18,16 +18,16 @@
     height: 50px;
 }
 
-#cardslot1{
+#cardslot4{
     transform: translate(-50px, 0px);
 }
-#cardslot2{
+#cardslot3{
     transform: translate(-0px, -50px);
 }
-#cardslot3{
+#cardslot2{
     transform: translate(50px, 0px);
 }
-#cardslot4{
+#cardslot1{
     transform: translate(-0px, 50px);
 }
 

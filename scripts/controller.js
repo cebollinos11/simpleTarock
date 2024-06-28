@@ -22,8 +22,9 @@ function playToTrick(index)
     gameloop();
 }
 
-
-const game = new _model.CardGame(4);
+const nPlayers = 4
+const game = new _model.CardGame(nPlayers);
+_view.initialize(nPlayers);
 game.initializeDeck();
 game.dealCards();
 // Initial render

@@ -22,8 +22,8 @@ class CardGame
     randomizeDealer()
     {
         this.currentTrump = "hearts"
-        this.currentPlayerIndex = 2;
-        this.currentTrickStarterIndex = 2;
+        this.currentPlayerIndex = 0;
+        this.currentTrickStarterIndex = 0;
     }
     givePriority()
     {
