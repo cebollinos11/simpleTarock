@@ -16,9 +16,12 @@ class CardGame
         this.currentPlayerIndex = 0;
         this.currentTrickStarterIndex = 0;
         this.currentTrick = []
+        this.trickHistory = []
+        this.currentTrump = null
     }
     randomizeDealer()
     {
+        this.currentTrump = "hearts"
         this.currentPlayerIndex = 2;
         this.currentTrickStarterIndex = 2;
     }
@@ -50,6 +53,13 @@ class CardGame
         this.playCard(card);
         return card;
     }
+
+    calculateTrickWinner()
+    {
+        this.trickHistory.push(this.currentTrick);
+        const winCard = cardUtils.highestCard(this.currentTrick,this.currentTrump);
+        console.log(winCard);
+    }
     
     playCard(chosenCard)
     {        
@@ -61,8 +71,15 @@ class CardGame
         console.log(`player ${this.currentPlayerIndex} plays ${chosenCard.toString()} `)                
         this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
         console.log("Priority -> "+ this.currentPlayerIndex );
-
+        if(this.currentTrick.length==4)
+            {
+                this.calculateTrickWinner()
+            }
     }
+
+    
+    
+    
 
 
     initializeDeck() {

@@ -19,6 +19,7 @@ function tradeWithHand(index) {
 function playToTrick(index)
 {
     game.playCard(game.getPlayerHand()[index]);
+    gameloop();
 }
 
 
@@ -30,24 +31,30 @@ game.dealCards();
 //_model.dealCards();
 game.randomizeDealer();
 
-let waitingForPlayer = false;
-while(waitingForPlayer)
-    {
-        waitingForPlayer = game.givePriority();
-        //render trick
-        if(waitingForPlayer == true)
-            {
-                //enable the view so user can pick a card
-                _view.renderPlayerHand(game.getPlayerHand(), playToTrick);
-                
-            }
-        else
-            {
-                //show trick because AI played
-                _view.renderTrick(game.currentTrick,game.currentTrickStarterIndex);
-            }
-    }
-
+function gameloop()
+{
+    console.log("gameloop enter"); 
+    let waitingForPlayer = false;
+    while(game.currentTrick.length<4)
+        {
+            waitingForPlayer = game.givePriority();
+            //render trick
+            if(waitingForPlayer == true)
+                {
+                    //enable the view so user can pick a card
+                    _view.renderPlayerHand(game.getPlayerHand(), playToTrick);
+                    break
+                }
+            else
+                {
+                    //show trick because AI played
+                    _view.renderTrick(game.currentTrick,game.currentTrickStarterIndex);
+                }
+        }
+    
+    
+}
+gameloop();
 console.log("n");
 // _view.renderPlayerHand(game.getPlayerHand(), playToTrick);
 // _view.renderDog(game.getDogHand(), tradeWithHand);

@@ -35,4 +35,33 @@ export const suitImage = {
       return suitOrder[a.suit]*100+rankOrder[a.rank] - suitOrder[b.suit]*100-rankOrder[b.rank];
     });
   }
+  function cardValue(card,trumpsuit) {
 
+    if (card.suit == trumpsuit) {
+        return 100 + trumps.indexOf(card.rank);  // Trumps have higher base value
+    }
+    return rankOrder[card.rank];
+}
+  export function highestCard(cards,trumpsuite) {
+    if (cards.length === 0) {
+        throw new Error("No cards in the trick.");
+    }
+
+    const leadingSuit = cards[0].suit;
+    let winningCard = cards[0];
+    
+    for (let i = 1; i < cards.length; i++) {
+        if (cards[i].suit === trumpsuite) {
+            if (winningCard.suit !== trumpsuite || cardValue(cards[i]) > cardValue(winningCard)) {
+                winningCard = cards[i];
+            }
+        } else if (cards[i].suit === leadingSuit) {
+            if (winningCard.suit !== trumpsuite && cardValue(cards[i]) > cardValue(winningCard)) {
+                winningCard = cards[i];
+            }
+        }
+    }
+    console.log("win");
+    console.log(winningCard);
+    return winningCard;
+}
