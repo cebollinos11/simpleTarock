@@ -30,3 +30,8 @@ PLAY_BASIC_GAME
 REVIEW_SCORE_ROUND
 REVIEW_SCORE_GAME
 
+
+== TODO ==
+animate cards into trick
+animate who won a trick
+show tricks after player plays
