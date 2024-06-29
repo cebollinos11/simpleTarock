@@ -32,7 +32,11 @@ game.dealCards();
 //_model.dealCards();
 game.randomizeDealer();
 
-function gameloop()
+async function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function gameloop()
 {
     console.log("gameloop enter"); 
     let waitingForPlayer = false;
@@ -50,12 +54,12 @@ function gameloop()
                 {
                     //show trick because AI played
                     _view.renderTrick(game.currentTrick,game.currentTrickStarterIndex);
+                    await delay(1000);
                 }
-        }
-    
+        }  
     
 }
-gameloop();
+await gameloop();
 console.log("n");
 // _view.renderPlayerHand(game.getPlayerHand(), playToTrick);
 // _view.renderDog(game.getDogHand(), tradeWithHand);
