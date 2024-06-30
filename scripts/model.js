@@ -56,9 +56,19 @@ class CardGame
 
     calculateTrickWinner()
     {
-        this.trickHistory.push(this.currentTrick);
         const winCard = cardUtils.highestCard(this.currentTrick,this.currentTrump);
         console.log(winCard);
+        return winCard;
+    }
+
+    completeTrick() //called by controller
+    {
+        this.trickHistory.push(this.currentTrick);
+        const winCard = this.calculateTrickWinner();
+        this.currentTrick = [];
+        //TODO select new starter
+        this.currentPlayerIndex = winCard.ownerIndex;
+        this.currentTrickStarterIndex = winCard.ownerIndex;
     }
     
     playCard(chosenCard)
@@ -69,10 +79,7 @@ class CardGame
             this.players[this.currentPlayerIndex].hand.splice(index, 1);
         }  
         this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
-        if(this.currentTrick.length==4)
-            {
-                this.calculateTrickWinner()
-            }
+
     }
 
     

@@ -5,7 +5,7 @@ import * as cardUtils from "./card-utils.js";
 const playerHandElement = document.getElementById('player-hand');
 const dogCardsElement = document.getElementById('dog-hand');
 let trickSlots = []
-
+let numPlayers = -1;
 
 function renderCard(card) {
     const cardElement = document.createElement('div');
@@ -64,6 +64,11 @@ function renderDog(dogHand, tradeWithHand, lastUpdated = null) {
 function renderTrick(currentTrick,whoStarted)
 {
     //clean tricks
+
+    for (let index = 0; index < numPlayers; index++) {
+        trickSlots[index].innerHTML = "";
+    }
+
     let indexShift = 0;
     currentTrick.forEach(card => {        
         const indexOfThis = ( whoStarted+indexShift)% trickSlots.length;
@@ -76,6 +81,7 @@ function renderTrick(currentTrick,whoStarted)
 
 function initialize(nPlayers)
 {
+    numPlayers = nPlayers;
     for (let index = 0; index < nPlayers; index++) {        
         trickSlots.push(document.getElementById(`cardslot${index+1}`));
     }

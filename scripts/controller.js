@@ -41,27 +41,36 @@ async function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function gameloop()
-{
-    let waitingForPlayer = false;
-    while(game.currentTrick.length<4)
-        {
-            waitingForPlayer = game.givePriority();
-            //render trick
-            if(waitingForPlayer == true)
-                {
-                    //enable the view so user can pick a card
-                    _view.renderPlayerHand(game.getPlayerHand(), playToTrick);
-                    break
-                }
-            else
-                {
-                    //show trick because AI played
-                    _view.renderTrick(game.currentTrick,game.currentTrickStarterIndex);
-                    await delay(_DELAY_MID);
-                }
-        }  
-    
+async function gameloop() {
+    let escapeLoop = false
+    while (game.getPlayerHand().length>0) { // Continue the loop until the round is over
+        
+        if(escapeLoop)
+            break;
+        while (game.currentTrick.length < 4) {
+            let waitingForPlayer = game.givePriority();
+
+            if (waitingForPlayer) {
+                // Enable the view so user can pick a card
+                _view.renderPlayerHand(game.getPlayerHand(), playToTrick);
+                escapeLoop = true;
+                break; // Exit the inner loop to wait for player input
+            } else {
+                // Show trick because AI played
+                _view.renderTrick(game.currentTrick, game.currentTrickStarterIndex);
+                await delay(_DELAY_MID);
+            }
+        }
+
+        if (game.currentTrick.length === 4) {
+            // Trick is complete
+            game.completeTrick(); // Handle end of trick (e.g., determine winner, collect cards)
+            _view.renderTrick(game.currentTrick, game.currentTrickStarterIndex);
+
+        }
+    }
+
+    // Handle end of round logic here, like scoring and starting a new round
 }
 await gameloop();
 // _view.renderPlayerHand(game.getPlayerHand(), playToTrick);
