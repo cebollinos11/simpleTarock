@@ -27,7 +27,6 @@ function renderPlayerHand(playerHand, tradeWithDog, lastUpdated = null) {
         playerHandElement.appendChild(cardElement);
         
         if (lastUpdated === card) {
-            console.log("animate");
             cardElement.classList.add('animate-top');
         }
     });
@@ -67,11 +66,8 @@ function renderTrick(currentTrick,whoStarted)
     //clean tricks
     let indexShift = 0;
     currentTrick.forEach(card => {        
-        console.log("show card "+card.toString())
         const indexOfThis = ( whoStarted+indexShift)% trickSlots.length;
-        console.log(indexOfThis);
         const slotView = trickSlots[indexOfThis];
-        console.log(slotView);
         slotView.innerHTML = "";
         slotView.appendChild(renderCard(card));
         indexShift++;

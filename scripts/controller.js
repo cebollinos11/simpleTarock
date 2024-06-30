@@ -3,6 +3,8 @@
 import * as _model from './model.js';
 import * as _view from './view.js';
 
+const _DELAY_MID = 1000
+
 
 function tradeWithDog(index) {
     const card = game.tradeCardFromPlayerToDog(index);
@@ -16,10 +18,13 @@ function tradeWithHand(index) {
     _view.renderPlayerHand(game.getPlayerHand(), tradeWithDog, card);
 }
 
-function playToTrick(index)
+async function playToTrick(index)
 {
     game.playCard(game.getPlayerHand()[index]);
-    gameloop();
+    _view,_view.renderPlayerHand(game.getPlayerHand());
+    _view.renderTrick(game.currentTrick,game.currentTrickStarterIndex);
+    await delay(_DELAY_MID);
+    await gameloop();
 }
 
 const nPlayers = 4
@@ -38,7 +43,6 @@ async function delay(ms) {
 
 async function gameloop()
 {
-    console.log("gameloop enter"); 
     let waitingForPlayer = false;
     while(game.currentTrick.length<4)
         {
@@ -54,13 +58,12 @@ async function gameloop()
                 {
                     //show trick because AI played
                     _view.renderTrick(game.currentTrick,game.currentTrickStarterIndex);
-                    await delay(1000);
+                    await delay(_DELAY_MID);
                 }
         }  
     
 }
 await gameloop();
-console.log("n");
 // _view.renderPlayerHand(game.getPlayerHand(), playToTrick);
 // _view.renderDog(game.getDogHand(), tradeWithHand);
 

@@ -68,9 +68,7 @@ class CardGame
         if (index !== -1) {
             this.players[this.currentPlayerIndex].hand.splice(index, 1);
         }  
-        console.log(`player ${this.currentPlayerIndex} plays ${chosenCard.toString()} `)                
         this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
-        console.log("Priority -> "+ this.currentPlayerIndex );
         if(this.currentTrick.length==4)
             {
                 this.calculateTrickWinner()
@@ -107,6 +105,7 @@ class CardGame
         this.dogHand = cardUtils.sortCardsBySuit(this.dogHand);
         this.deck = this.deck.slice(4);
         console.log(this);
+
     }
 
     getPlayerHand() {
@@ -144,6 +143,7 @@ class Card{
     {
         this.suit=suit;
         this.rank=rank;
+        this.owner = null;
     }
 
     toString()

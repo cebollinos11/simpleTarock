@@ -61,7 +61,5 @@ export const suitImage = {
             }
         }
     }
-    console.log("win");
-    console.log(winningCard);
     return winningCard;
 }
