@@ -96,6 +96,9 @@ class CardGame
         const handsize = Math.floor((this.deck.length- dogSize) / this.numPlayers );
         for (let index = 0; index < this.players.length; index++) {
             let playerHand = this.deck.slice(0, handsize);
+            playerHand.forEach(c => {
+                c.ownerIndex = index;
+            });
             playerHand = cardUtils.sortCardsBySuit(playerHand);
             this.players[index].hand = playerHand;
             this.deck = this.deck.slice(handsize);       
@@ -143,7 +146,7 @@ class Card{
     {
         this.suit=suit;
         this.rank=rank;
-        this.owner = null;
+        this.ownerIndex = -1;
     }
 
     toString()
