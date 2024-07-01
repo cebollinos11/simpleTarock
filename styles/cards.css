@@ -1,12 +1,10 @@
 .card {
     width: 10%; /* Set width to 8% of viewport width */
     aspect-ratio: 2/3;
-    border: 1px solid #fff;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: -5px;
-    background-color: #1b5e20;
     border-radius: 0.5em;
     cursor: pointer;
 }
@@ -19,16 +17,16 @@
 }
 
 #cardslot4{
-    transform: translate(-50px, 0px);
+    transform: translate(-5em, 0px);
 }
 #cardslot3{
-    transform: translate(-0px, -50px);
+    transform: translate(-0px, -5em);
 }
 #cardslot2{
-    transform: translate(50px, 0px);
+    transform: translate(5em, 0px);
 }
 #cardslot1{
-    transform: translate(-0px, 50px);
+    transform: translate(-0px, 5em);
 }
 
 
@@ -118,16 +116,16 @@
 }
 
 
-@media (min-width: 468px) {
+@media (min-width: 491px) {
     .card {
-        width: 50px; /* Width for desktop */
+        width: 5em; /* Width for desktop */
     }
 }
 
 /* Mobile styles */
-@media (max-width: 467px) {
+@media (max-width: 490px) {
     .card {
-        width: 40px; /* Width for mobile */
+        width: 3em; /* Width for mobile */
     }
 }
 
