@@ -21,7 +21,7 @@ function tradeWithHand(index) {
 async function playToTrick(index)
 {
     game.playCard(game.getPlayerHand()[index]);
-    _view,_view.renderPlayerHand(game.getPlayerHand());
+    _view,_view.renderPlayerHand(game.getPlayerHand(),null,null,game.getPlayerHand());
     _view.renderTrick(game.currentTrick.cards,game.currentTrick.lastCardPlayed);
     await delay(_DELAY_MID);
     await gameloop();
@@ -54,7 +54,7 @@ async function gameloop() {
 
             if (waitingForPlayer) {
                 // Enable the view so user can pick a card
-                _view.renderPlayerHand(game.getPlayerHand(), playToTrick);
+                _view.renderPlayerHand(game.getPlayerHand(), playToTrick, null, game.getPlayerHand().slice(0,3));
                 escapeLoop = true;
                 break; // Exit the inner loop to wait for player input
             } else {

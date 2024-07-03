@@ -19,14 +19,23 @@ function renderCard(card) {
     return cardElement;
 }
 
-function renderPlayerHand(playerHand, tradeWithDog, lastUpdated = null) {
+function renderPlayerHand(playerHand, callbackOnClick, animateCard = null, disabledCards = []) {
     playerHandElement.innerHTML = '';
     playerHand.forEach((card, index) => {
         const cardElement = renderCard(card);
-        cardElement.addEventListener('click', () => tradeWithDog(index));
+        cardElement.style.zIndex = index;
+        if (!disabledCards.includes(card)) {
+            //cardElement.addEventListener('click', () => callbackOnClick(index));
+            cardElement.addEventListener('click', () => callbackOnClick(index));
+        }
+        else
+        {
+            cardElement.classList.add("disabled");//visual filter
+        }        
+        
         playerHandElement.appendChild(cardElement);
         
-        if (lastUpdated === card) {
+        if (animateCard === card) {
             cardElement.classList.add('animate-top');
         }
     });
