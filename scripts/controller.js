@@ -3,7 +3,7 @@
 import * as _model from './model.js';
 import * as _view from './view.js';
 
-const _DELAY_MID = 1000
+const _DELAY_MID = 500;
 
 
 function tradeWithDog(index) {
