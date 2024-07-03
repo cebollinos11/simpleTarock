@@ -2,6 +2,7 @@ class Trick
 {
 
     firstCard = null;
+    lastCardPlayed = null;
     constructor(numPlayers)
     {
         this.cards = []
@@ -18,6 +19,7 @@ class Trick
             {
                 this.firstCard = card;
             }
+        this.lastCardPlayed = card;
     }
 
     clear()

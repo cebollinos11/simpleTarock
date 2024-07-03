@@ -61,22 +61,51 @@ function renderDog(dogHand, tradeWithHand, lastUpdated = null) {
 }
 
 //_view.renderTrick(game.currentTrick,true);
-function renderTrick(currentTrick)
+function renderTrick(currentTrickCards,lastCardPlayed)
 {
     //clean tricks
 
     for (let index = 0; index < numPlayers; index++) {
         trickSlots[index].innerHTML = "";
         trickSlots[index].innerHTML = "";
-        const c = currentTrick[index];
+        const c = currentTrickCards[index];
         if(c!=null)
             {
-                trickSlots[index].appendChild(renderCard(c));
+                let rCard = renderCard(c);
+                if(c==lastCardPlayed)
+                    {
+                        rCard.classList.add(getAnimationDirection(lastCardPlayed.ownerIndex));
+                    }
+                trickSlots[index].appendChild(rCard);
             }
 
     }
 
     
+}
+
+function getAnimationDirection(playerIndex)
+{
+    
+
+    switch (playerIndex) {
+        case 0:
+            return "animate-bottom"
+            break;
+        case 1:
+            return "animate-right"
+            break;
+        case 2:
+            return "animate-top"
+            break;
+        case 3:
+            return "animate-left"
+            break;
+    
+        default:
+            return "animate-bottom";
+            break;
+    }
 }
 
 function initialize(nPlayers)
