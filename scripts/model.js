@@ -57,7 +57,7 @@ class CardGame
 
     calculateTrickWinner()
     {
-        const winCard = cardUtils.highestCard(this.currentTrick.cards,this.currentTrump);
+        const winCard = cardUtils.highestCard(this.currentTrick.cards,this.currentTrump,this.currentTrick.firstCard);
         console.log(winCard);
         return winCard;
     }

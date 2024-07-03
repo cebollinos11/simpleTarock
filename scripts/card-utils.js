@@ -42,20 +42,19 @@ export const suitImage = {
     }
     return rankOrder[card.rank];
 }
-  export function highestCard(cards,trumpsuite) {
+  export function highestCard(cards,trumpsuite,firstCard) {
     if (cards.length === 0) {
         throw new Error("No cards in the trick.");
     }
 
-    const leadingSuit = cards[0].suit;
-    let winningCard = cards[0];
+    let winningCard = firstCard;
     
-    for (let i = 1; i < cards.length; i++) {
+    for (let i = 0; i < cards.length; i++) {
         if (cards[i].suit === trumpsuite) {
             if (winningCard.suit !== trumpsuite || cardValue(cards[i]) > cardValue(winningCard)) {
                 winningCard = cards[i];
             }
-        } else if (cards[i].suit === leadingSuit) {
+        } else if (cards[i].suit === firstCard.suit) {
             if (winningCard.suit !== trumpsuite && cardValue(cards[i]) > cardValue(winningCard)) {
                 winningCard = cards[i];
             }

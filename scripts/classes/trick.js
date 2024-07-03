@@ -1,16 +1,23 @@
 class Trick
 {
+
+    firstCard = null;
     constructor(numPlayers)
     {
         this.cards = []
         for (let index = 0; index < numPlayers; index++) {
             this.cards.push(null);            
         }
+        
     }
 
     playCard(card,playerIndex)
     {
         this.cards[playerIndex] = card;
+        if(this.getCardsPlayed() == 1)
+            {
+                this.firstCard = card;
+            }
     }
 
     clear()
