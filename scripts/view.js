@@ -61,7 +61,7 @@ function renderDog(dogHand, tradeWithHand, lastUpdated = null) {
 }
 
 //_view.renderTrick(game.currentTrick,true);
-function renderTrick(currentTrick,whoStarted)
+function renderTrick(currentTrick)
 {
     //clean tricks
 
