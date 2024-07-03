@@ -19,12 +19,12 @@ function renderCard(card) {
     return cardElement;
 }
 
-function renderPlayerHand(playerHand, callbackOnClick, animateCard = null, disabledCards = []) {
+function renderPlayerHand(playerHand, callbackOnClick, animateCard = null, enabledCards = []) {
     playerHandElement.innerHTML = '';
     playerHand.forEach((card, index) => {
         const cardElement = renderCard(card);
         cardElement.style.zIndex = index;
-        if (!disabledCards.includes(card)) {
+        if (enabledCards.includes(card)) {
             //cardElement.addEventListener('click', () => callbackOnClick(index));
             cardElement.addEventListener('click', () => callbackOnClick(index));
         }

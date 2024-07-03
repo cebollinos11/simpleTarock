@@ -41,6 +41,41 @@ class Trick
 
         return totalCards;
     }
+
+    getLegalCards(cardsInHand) {
+        let legalCards = [];
+
+        if (this.getCardsPlayed() == 0) {
+            // If no cards have been played yet in this trick, all cards in hand are legal.
+            return cardsInHand;
+        }
+
+        let firstCardSuit = this.firstCard.suit;
+
+        // Check if the player has a card of the same suit as the first card played.
+        let hasSameSuit = cardsInHand.some(card => card.suit === firstCardSuit);
+
+        if (hasSameSuit) {
+            // If the player has a card of the same suit, they must play one of those cards.
+            legalCards = cardsInHand.filter(card => card.suit === firstCardSuit);
+        } else {
+            // If the player does not have a card of the same suit, check for trump suit.
+            let hasTrumpSuit = cardsInHand.some(card => card.suit === this.trumpSuit);
+            if (hasTrumpSuit) {
+                // If the player has a card of the trump suit, they must play one of those cards.
+                legalCards = cardsInHand.filter(card => card.suit === this.trumpSuit && (card.rank > this.highestTrump.rank));
+                // If no higher trump cards are available, all trump cards are legal.
+                if (legalCards.length === 0) {
+                    legalCards = cardsInHand.filter(card => card.suit === this.trumpSuit);
+                }
+            } else {
+                // If the player does not have a card of the same suit or the trump suit, they may play any card.
+                legalCards = cardsInHand;
+            }
+        }
+
+        return legalCards;
+    }
 }
 
 export {Trick};
