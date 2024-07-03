@@ -22,7 +22,7 @@ async function playToTrick(index)
 {
     game.playCard(game.getPlayerHand()[index]);
     _view,_view.renderPlayerHand(game.getPlayerHand());
-    _view.renderTrick(game.currentTrick,game.currentTrickStarterIndex);
+    _view.renderTrick(game.currentTrick.cards,game.currentTrickStarterIndex);
     await delay(_DELAY_MID);
     await gameloop();
 }
@@ -43,11 +43,13 @@ async function delay(ms) {
 
 async function gameloop() {
     let escapeLoop = false
+
+    //todo, this is wrong
     while (game.getPlayerHand().length>0) { // Continue the loop until the round is over
         
         if(escapeLoop)
             break;
-        while (game.currentTrick.length < 4) {
+        while (game.currentTrick.getCardsPlayed()   < 4) {
             let waitingForPlayer = game.givePriority();
 
             if (waitingForPlayer) {
@@ -57,15 +59,15 @@ async function gameloop() {
                 break; // Exit the inner loop to wait for player input
             } else {
                 // Show trick because AI played
-                _view.renderTrick(game.currentTrick, game.currentTrickStarterIndex);
+                _view.renderTrick(game.currentTrick.cards, game.currentTrickStarterIndex);
                 await delay(_DELAY_MID);
             }
         }
 
-        if (game.currentTrick.length === 4) {
+        if (game.currentTrick.getCardsPlayed() === 4) {
             // Trick is complete
             game.completeTrick(); // Handle end of trick (e.g., determine winner, collect cards)
-            _view.renderTrick(game.currentTrick, game.currentTrickStarterIndex);
+            _view.renderTrick(game.currentTrick.cards, game.currentTrickStarterIndex);
 
         }
     }

@@ -67,16 +67,16 @@ function renderTrick(currentTrick,whoStarted)
 
     for (let index = 0; index < numPlayers; index++) {
         trickSlots[index].innerHTML = "";
+        trickSlots[index].innerHTML = "";
+        const c = currentTrick[index];
+        if(c!=null)
+            {
+                trickSlots[index].appendChild(renderCard(c));
+            }
+
     }
 
-    let indexShift = 0;
-    currentTrick.forEach(card => {        
-        const indexOfThis = ( whoStarted+indexShift)% trickSlots.length;
-        const slotView = trickSlots[indexOfThis];
-        slotView.innerHTML = "";
-        slotView.appendChild(renderCard(card));
-        indexShift++;
-    });
+    
 }
 
 function initialize(nPlayers)

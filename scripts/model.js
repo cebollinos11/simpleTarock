@@ -1,6 +1,7 @@
 // model.js
 
 import * as cardUtils from "./card-utils.js";
+import { Trick } from "./classes/trick.js";
 
 
 class CardGame
@@ -15,7 +16,7 @@ class CardGame
         this.dogHand = [];
         this.currentPlayerIndex = 0;
         this.currentTrickStarterIndex = 0;
-        this.currentTrick = []
+        this.currentTrick = new Trick(numPlayers);
         this.trickHistory = []
         this.currentTrump = null
     }
@@ -56,7 +57,7 @@ class CardGame
 
     calculateTrickWinner()
     {
-        const winCard = cardUtils.highestCard(this.currentTrick,this.currentTrump);
+        const winCard = cardUtils.highestCard(this.currentTrick.cards,this.currentTrump);
         console.log(winCard);
         return winCard;
     }
@@ -65,7 +66,7 @@ class CardGame
     {
         this.trickHistory.push(this.currentTrick);
         const winCard = this.calculateTrickWinner();
-        this.currentTrick = [];
+        this.currentTrick.clear();
         //TODO select new starter
         this.currentPlayerIndex = winCard.ownerIndex;
         this.currentTrickStarterIndex = winCard.ownerIndex;
@@ -73,7 +74,7 @@ class CardGame
     
     playCard(chosenCard)
     {        
-        this.currentTrick.push(chosenCard)        
+        this.currentTrick.playCard(chosenCard,this.currentPlayerIndex);        
         const index = this.players[this.currentPlayerIndex].hand.indexOf(chosenCard);
         if (index !== -1) {
             this.players[this.currentPlayerIndex].hand.splice(index, 1);
