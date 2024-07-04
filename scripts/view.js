@@ -4,6 +4,8 @@ import * as cardUtils from "./card-utils.js";
 
 const playerHandElement = document.getElementById('player-hand');
 const dogCardsElement = document.getElementById('dog-hand');
+const trickCounter = document.getElementById('trick-counter');
+
 let trickSlots = []
 let numPlayers = -1;
 
@@ -44,6 +46,7 @@ function renderPlayerHand(playerHand, callbackOnClick, animateCard = null, enabl
 function renderTrickStatus(attack,defense)
 {
     console.log(attack,defense);
+    trickCounter.innerHTML = `${attack}/${defense}`;
 }
 
 function renderDog(dogHand, tradeWithHand, lastUpdated = null) {
