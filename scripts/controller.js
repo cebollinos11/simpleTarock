@@ -66,6 +66,7 @@ async function gameloop() {
 
         if (game.currentTrick.getCardsPlayed() === 4) {
             // Trick is complete
+            await delay(_DELAY_MID);
             game.completeTrick(); // Handle end of trick (e.g., determine winner, collect cards)
             _view.renderTrick(game.currentTrick.cards,game.currentTrick.lastCardPlayed);
 

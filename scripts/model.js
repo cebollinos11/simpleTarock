@@ -52,7 +52,9 @@ class CardGame
     //todo, proper AI
     aiSelectCard()
     {
-        let card = this.players[this.currentPlayerIndex].hand[0];
+        //get legal cards
+        const legalcards = this.currentTrick.getLegalCards(this.players[this.currentPlayerIndex].hand);
+        let card = legalcards[Math.floor((Math.random()*legalcards.length))];
         this.playCard(card);
         return card;
     }
