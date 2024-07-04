@@ -70,11 +70,8 @@ class Trick
             let hasTrumpSuit = cardsInHand.some(card => card.suit === this.trumpSuit);
             if (hasTrumpSuit) {
                 // If the player has a card of the trump suit, they must play one of those cards.
-                legalCards = cardsInHand.filter(card => card.suit === this.trumpSuit && (card.rank > this.highestTrump.rank));
-                // If no higher trump cards are available, all trump cards are legal.
-                if (legalCards.length === 0) {
-                    legalCards = cardsInHand.filter(card => card.suit === this.trumpSuit);
-                }
+                legalCards = cardsInHand.filter(card => card.suit === this.trumpSuit);
+                // If no higher trump cards are available, all trump cards are legal.                
             } else {
                 // If the player does not have a card of the same suit or the trump suit, they may play any card.
                 legalCards = cardsInHand;
