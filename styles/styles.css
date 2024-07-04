@@ -53,10 +53,10 @@ html,body,#wrapper {
 
 #trick-counter{
     background-color: rgba(183, 179, 179, 0.36);
-    width: 5em;
+    width: 10em;
     height: 5em;
     position: absolute;
-    right: 1px;
+    right: 1em;
 }
 
 .disabled{

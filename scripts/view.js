@@ -1,5 +1,6 @@
 // view.js
 
+import TableModule from "./classes/TableModule.js";
 import * as cardUtils from "./card-utils.js";
 
 const playerHandElement = document.getElementById('player-hand');
@@ -46,7 +47,15 @@ function renderPlayerHand(playerHand, callbackOnClick, animateCard = null, enabl
 function renderTrickStatus(attack,defense)
 {
     console.log(attack,defense);
-    trickCounter.innerHTML = `${attack}/${defense}`;
+    // trickCounter.innerHTML = `${attack}/${defense}`;
+
+        const data = [
+            { Team: 'Attack', Tricks: attack },
+            { Team: 'Defense', Tricks: defense }
+        ];
+
+        const tableModule = new TableModule(data, 'trick-counter');
+        tableModule.generateTable();
 }
 
 function renderDog(dogHand, tradeWithHand, lastUpdated = null) {
