@@ -6,6 +6,7 @@ import { Trick } from "./classes/trick.js";
 
 class CardGame
 {
+    currentTrick = null;
     constructor(numPlayers){
         this.numPlayers = numPlayers;
         this.players = []
@@ -16,13 +17,14 @@ class CardGame
         this.dogHand = [];
         this.currentPlayerIndex = 0;
         this.currentTrickStarterIndex = 0;
-        this.currentTrick = new Trick(numPlayers);
+        
         this.trickHistory = []
         this.currentTrump = null
     }
     randomizeDealer()
     {
-        this.currentTrump = "hearts"
+        this.currentTrump = "hearts";
+        this.currentTrick = new Trick(this.numPlayers,this.currentTrump);
         this.currentPlayerIndex = 0;
         this.currentTrickStarterIndex = 0;
     }

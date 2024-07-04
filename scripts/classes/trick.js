@@ -3,12 +3,15 @@ class Trick
 
     firstCard = null;
     lastCardPlayed = null;
-    constructor(numPlayers)
+    highestTrump = -1;
+    constructor(numPlayers,trumpSuit)
     {
+        this.highestTrump = -1;
         this.cards = []
         for (let index = 0; index < numPlayers; index++) {
             this.cards.push(null);            
         }
+        this.trumpSuit = trumpSuit;
         
     }
 
@@ -20,6 +23,10 @@ class Trick
                 this.firstCard = card;
             }
         this.lastCardPlayed = card;
+        if(card.suit === this.trumpSuit)
+            {
+                this.highestTrump = Math.max(this.highestTrump,card.rank);
+            }
     }
 
     clear()
