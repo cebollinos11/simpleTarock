@@ -70,10 +70,23 @@ class CardGame
     {
         this.trickHistory.push(this.currentTrick);
         const winCard = this.calculateTrickWinner();
+        this.players[winCard.ownerIndex].tricksWon++;
         this.currentTrick.clear();
         //TODO select new starter
         this.currentPlayerIndex = winCard.ownerIndex;
         this.currentTrickStarterIndex = winCard.ownerIndex;
+    }
+
+    getAttackDefenseTricks()
+    {
+        const attack = this.players[0].tricksWon;
+        let defense = 0;
+        for (let index = 1; index < this.players.length; index++) {
+            defense += this.players[index].tricksWon;
+            
+        }
+
+        return [attack,defense];
     }
     
     playCard(chosenCard)
@@ -149,6 +162,8 @@ class Player {
     constructor(isAi) {
      this.isAi = isAi;
      this.hand = [];
+     this.score = 0;
+     this.tricksWon = 0;
    }
 }
 

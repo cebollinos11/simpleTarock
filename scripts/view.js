@@ -41,6 +41,11 @@ function renderPlayerHand(playerHand, callbackOnClick, animateCard = null, enabl
     });
 }
 
+function renderTrickStatus(attack,defense)
+{
+    console.log(attack,defense);
+}
+
 function renderDog(dogHand, tradeWithHand, lastUpdated = null) {
     const dogCardsNumber = 4;
     dogCardsElement.innerHTML = '';
@@ -129,5 +134,6 @@ export {
     initialize,
     renderPlayerHand,
     renderDog,
-    renderTrick
+    renderTrick,
+    renderTrickStatus
 };
