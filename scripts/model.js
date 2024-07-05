@@ -17,9 +17,7 @@ class CardGame
         this.deck = [];
         this.dogHand = [];
         this.currentPlayerIndex = 0;
-        this.currentTrickStarterIndex = 0;
-        
-        this.trickHistory = []
+        this.currentTrickStarterIndex = 0;        
         this.currentTrump = null
     }
     randomizeDealer()
@@ -82,7 +80,6 @@ class CardGame
 
     completeTrick() //called by controller
     {
-        this.trickHistory.push(this.currentTrick);
         const winCard = this.calculateTrickWinner();
         this.players[winCard.ownerIndex].tricksWon++;
         this.currentTrick.clear();
