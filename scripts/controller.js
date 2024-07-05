@@ -32,9 +32,6 @@ const game = new _model.CardGame(nPlayers);
 _view.initialize(nPlayers);
 game.initializeDeck();
 game.dealCards();
-// Initial render
-//_model.initializeDeck();
-//_model.dealCards();
 game.randomizeDealer();
 
 async function delay(ms) {

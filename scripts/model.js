@@ -142,8 +142,13 @@ class CardGame
     }
 
     dealCards() {
-        const dogSize = 4;
-        let  handsize = Math.floor((this.deck.length- dogSize) / this.numPlayers );
+        const dogSize = 3;
+
+        //make hand size even so there is always a winner
+        let  handsize = Math.floor((this.deck.length - dogSize) / this.numPlayers );
+        if(handsize%2==0)
+            handsize-=1;
+
         //handsize = 3;
         for (let index = 0; index < this.players.length; index++) {
             let playerHand = this.deck.slice(0, handsize);
