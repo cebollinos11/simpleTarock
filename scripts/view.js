@@ -8,6 +8,8 @@ const dogCardsElement = document.getElementById('dog-hand');
 const hash_trickCounter = 'trick-counter';
 const trickResult = document.getElementById('trick-result');
 const testbutton = document.getElementById("test");
+const trickcenter = document.getElementById("trick-center");
+
 testbutton.onclick = function(){showAndMoveTrickResult()};
 
 let trickSlots = []
@@ -70,17 +72,26 @@ function renderTrickStatus(attack,defense)
         trickResult.style.backgroundColor="red";
         moveto = "move-to-2";
     }
-    showAndMoveTrickResult(moveto);
+    //showAndMoveTrickResult(trickResult,moveto);
+    //showAndMoveTrickResult(trickcenter,moveto);
+
 }
 
-function showAndMoveTrickResult(moveto) {
-    const div = trickResult;
+function animateTrickTaker(winnerId)
+{
+    showAndMoveTrickResult(trickcenter,"move-to-"+winnerId);
+}
 
+function showAndMoveTrickResult(div,moveto) {
+    
+    console.log(moveto);
     // trickResult.style.backgroundColor="yellow";
     // trickResult.innerHTML = "LOSE"
 
     // Make the div visible
     div.classList.add('visible');
+    div.classList.add(moveto);
+
     
     //Move to bottom after a short delay to ensure visibility
     setTimeout(() => {
@@ -89,9 +100,9 @@ function showAndMoveTrickResult(moveto) {
     
     // Hide the div again after the animation is complete
     setTimeout(() => {
-        div.classList.remove('visible', moveto);
-        //div.style.visibility = 'hidden'; // Ensure it's hidden after animation
-    }, 1000); // 500ms delay + 2000ms animation time
+        div.classList.remove('visible', moveto);        
+        div.style.visibility = 'hidden'; // Ensure it's hidden after animation
+    }, 600); // 500ms delay + 2000ms animation time
 }
 
 function renderDog(dogHand, tradeWithHand, lastUpdated = null) {
@@ -143,6 +154,8 @@ function renderTrick(currentTrickCards,lastCardPlayed)
 
     }
 
+    trickcenter.style.visibility="visible";
+
     
 }
 
@@ -189,5 +202,6 @@ export {
     renderDog,
     renderTrick,
     renderTrickStatus,
-    showRoundScores
+    showRoundScores,
+    animateTrickTaker
 };

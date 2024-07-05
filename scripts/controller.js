@@ -64,7 +64,10 @@ async function gameloop() {
         if (game.currentTrick.getCardsPlayed() === 4) {
             // Trick is complete
             await delay(_DELAY_MID);
-            game.completeTrick(); // Handle end of trick (e.g., determine winner, collect cards)
+            const winnerID = game.completeTrick(); // Handle end of trick (e.g., determine winner, collect cards)
+            _view.animateTrickTaker(winnerID);
+            await delay(_DELAY_MID);
+            await delay(_DELAY_MID);
             const [attack,defense] = game.getAttackDefenseTricks();
             _view.renderTrickStatus(attack,defense);
             await delay(_DELAY_MID);

@@ -96,6 +96,7 @@ class CardGame
             this.currentTrickStarterIndex = winCard.ownerIndex;
 
         }
+        return winCard.ownerIndex;
 
     }
 
