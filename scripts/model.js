@@ -10,6 +10,7 @@ class CardGame
     constructor(numPlayers){
         this.numPlayers = numPlayers;
         this.players = []
+        this.isRoundFinished = false;
         for (let index = 0; index < numPlayers; index++) {
             this.players.push(new Player(index>0));            
         }
@@ -66,6 +67,19 @@ class CardGame
         return winCard;
     }
 
+    calculateRoundScore()
+    {
+        const [attack,defense] = this.getAttackDefenseTricks();
+        if(attack>defense)
+        {
+            console.log("Player won!");
+        }
+        else
+        {
+            console.log("Player lost!");
+        }
+    }
+
     completeTrick() //called by controller
     {
         this.trickHistory.push(this.currentTrick);
@@ -73,8 +87,19 @@ class CardGame
         this.players[winCard.ownerIndex].tricksWon++;
         this.currentTrick.clear();
         //TODO select new starter
-        this.currentPlayerIndex = winCard.ownerIndex;
-        this.currentTrickStarterIndex = winCard.ownerIndex;
+        
+        //check for end of round
+        if(this.players[0].hand.length==0)
+        {
+            this.calculateRoundScore();
+        }
+        else
+        {
+            this.currentPlayerIndex = winCard.ownerIndex;
+            this.currentTrickStarterIndex = winCard.ownerIndex;
+
+        }
+
     }
 
     getAttackDefenseTricks()
@@ -118,7 +143,8 @@ class CardGame
 
     dealCards() {
         const dogSize = 4;
-        const handsize = Math.floor((this.deck.length- dogSize) / this.numPlayers );
+        let  handsize = Math.floor((this.deck.length- dogSize) / this.numPlayers );
+        //handsize = 3;
         for (let index = 0; index < this.players.length; index++) {
             let playerHand = this.deck.slice(0, handsize);
             playerHand.forEach(c => {

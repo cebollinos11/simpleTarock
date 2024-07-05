@@ -45,7 +45,7 @@ async function gameloop() {
     let escapeLoop = false
 
     //todo, this is wrong
-    while (game.getPlayerHand().length>0) { // Continue the loop until the round is over
+    while (game.isRoundFinished == false) { // Continue the loop until the round is over
         
         if(escapeLoop)
             break;
@@ -75,6 +75,8 @@ async function gameloop() {
     }
 
     // Handle end of round logic here, like scoring and starting a new round
+    _view.showRoundScores();
+
 }
 await gameloop();
 // _view.renderPlayerHand(game.getPlayerHand(), playToTrick);

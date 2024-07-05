@@ -142,10 +142,16 @@ function initialize(nPlayers)
     }
 }
 
+function showRoundScores()
+{
+
+}
+
 export {
     initialize,
     renderPlayerHand,
     renderDog,
     renderTrick,
-    renderTrickStatus
+    renderTrickStatus,
+    showRoundScores
 };
