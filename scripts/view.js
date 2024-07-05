@@ -10,7 +10,7 @@ const trickResult = document.getElementById('trick-result');
 const testbutton = document.getElementById("test");
 const trickcenter = document.getElementById("trick-center");
 
-testbutton.onclick = function(){showAndMoveTrickResult()};
+testbutton.onclick = function(){  };
 
 let trickSlots = []
 let numPlayers = -1;
@@ -61,19 +61,7 @@ function renderTrickStatus(attack,defense)
 
     const tableModule = new TableModule(data, hash_trickCounter);
     tableModule.generateTable();
-    let moveto = "move-to-0";
-    if(attack>defense)
-    {
-        trickResult.innerHTML = "WIN";
-        trickResult.style.backgroundColor="green";
-    }
-    else{
-        trickResult.innerHTML = "LOSE";
-        trickResult.style.backgroundColor="red";
-        moveto = "move-to-2";
-    }
-    //showAndMoveTrickResult(trickResult,moveto);
-    //showAndMoveTrickResult(trickcenter,moveto);
+    
 
 }
 
