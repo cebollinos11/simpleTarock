@@ -7,7 +7,8 @@ const playerHandElement = document.getElementById('player-hand');
 const dogCardsElement = document.getElementById('dog-hand');
 const hash_trickCounter = 'trick-counter';
 const trickResult = document.getElementById('trick-result');
-
+const testbutton = document.getElementById("test");
+testbutton.onclick = function(){showAndMoveTrickResult()};
 
 let trickSlots = []
 let numPlayers = -1;
@@ -58,17 +59,39 @@ function renderTrickStatus(attack,defense)
 
     const tableModule = new TableModule(data, hash_trickCounter);
     tableModule.generateTable();
-
+    let moveto = "move-to-0";
     if(attack>defense)
     {
-        trickResult.innerHTML = "WIN"
-        trickResult.style.classList = "win";
+        trickResult.innerHTML = "WIN";
+        trickResult.style.backgroundColor="green";
     }
     else{
-        trickResult.innerHTML = "LOSE"
-        trickResult.style.classList = "lose";
+        trickResult.innerHTML = "LOSE";
+        trickResult.style.backgroundColor="red";
+        moveto = "move-to-2";
     }
-    trickResult.style.visibility="visible"; 
+    showAndMoveTrickResult(moveto);
+}
+
+function showAndMoveTrickResult(moveto) {
+    const div = trickResult;
+
+    // trickResult.style.backgroundColor="yellow";
+    // trickResult.innerHTML = "LOSE"
+
+    // Make the div visible
+    div.classList.add('visible');
+    
+    //Move to bottom after a short delay to ensure visibility
+    setTimeout(() => {
+        div.classList.add(moveto);
+    }, 200); // Adjust the delay as needed
+    
+    // Hide the div again after the animation is complete
+    setTimeout(() => {
+        div.classList.remove('visible', moveto);
+        //div.style.visibility = 'hidden'; // Ensure it's hidden after animation
+    }, 1000); // 500ms delay + 2000ms animation time
 }
 
 function renderDog(dogHand, tradeWithHand, lastUpdated = null) {
