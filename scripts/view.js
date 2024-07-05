@@ -5,7 +5,9 @@ import * as cardUtils from "./card-utils.js";
 
 const playerHandElement = document.getElementById('player-hand');
 const dogCardsElement = document.getElementById('dog-hand');
-const trickCounter = document.getElementById('trick-counter');
+const hash_trickCounter = 'trick-counter';
+const trickResult = document.getElementById('trick-result');
+
 
 let trickSlots = []
 let numPlayers = -1;
@@ -49,13 +51,24 @@ function renderTrickStatus(attack,defense)
     console.log(attack,defense);
     // trickCounter.innerHTML = `${attack}/${defense}`;
 
-        const data = [
-            { Team: 'Attack', Tricks: attack },
-            { Team: 'Defense', Tricks: defense }
-        ];
+    const data = [
+        { Team: 'Attack', Tricks: attack },
+        { Team: 'Defense', Tricks: defense }
+    ];
 
-        const tableModule = new TableModule(data, 'trick-counter');
-        tableModule.generateTable();
+    const tableModule = new TableModule(data, hash_trickCounter);
+    tableModule.generateTable();
+
+    if(attack>defense)
+    {
+        trickResult.innerHTML = "WIN"
+        trickResult.style.classList = "win";
+    }
+    else{
+        trickResult.innerHTML = "LOSE"
+        trickResult.style.classList = "lose";
+    }
+    trickResult.style.visibility="visible"; 
 }
 
 function renderDog(dogHand, tradeWithHand, lastUpdated = null) {

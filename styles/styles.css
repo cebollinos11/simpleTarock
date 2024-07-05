@@ -57,6 +57,28 @@ html,body,#wrapper {
     right: 1em;
 }
 
+#trick-result
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 50;
+    padding: 10px;
+    border: solid 1px black;  
+    
+}
+
+#trick-result.win::before
+{
+    background-color: green;
+}
+
+#trick-result.lose::before
+{
+    background-color: red;
+}
+
 .disabled{
     filter: sepia(100%) saturate(0%) brightness(70%);
 }
