@@ -7,6 +7,7 @@
     margin-right: -5px;
     border-radius: 0.5em;
     cursor: pointer;
+    width: 4em;
 }
 
 .cardslot{
@@ -115,18 +116,7 @@
 }
 
 
-@media (min-width: 491px) {
-    .card {
-        width: 5em; /* Width for desktop */
-    }
-}
 
-/* Mobile styles */
-@media (max-width: 490px) {
-    .card {
-        width: 3em; /* Width for mobile */
-    }
-}
 
 .card > img{
     width: 100%;
