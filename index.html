@@ -8,38 +8,39 @@
     <link rel="stylesheet" href="styles/cards.css">
 </head>
 <body>
-    <div id="game">      
-        <div id="trick-counter"></div>
-        <button id="test">Test</button>
-        <div id="game-board">
-            <div id="trick-center">
-                <div class="cardslot"  id="cardslot1"><div class="card disabled animate-left"><img src='cards/KS.svg'></img></div></div>                
-                <div class="cardslot"  id="cardslot2"><div class="card animate-top">AQ</div></div>
-                <div class="cardslot"  id="cardslot3"><div class="card animate-right">AQ</div></div>
-                <div class="cardslot"  id="cardslot4"><div class="card animate-bottom">AQ</div></div>
+    <div class="container">
+        <div id="game">      
+            <div id="trick-counter"></div>
+            <button id="test">Test</button>
+            <div id="game-board">
+                <div id="trick-center">
+                    <div class="cardslot"  id="cardslot1"><div class="card disabled animate-left"><img src='cards/KS.svg'></img></div></div>                
+                    <div class="cardslot"  id="cardslot2"><div class="card animate-top">AQ</div></div>
+                    <div class="cardslot"  id="cardslot3"><div class="card animate-right">AQ</div></div>
+                    <div class="cardslot"  id="cardslot4"><div class="card animate-bottom">AQ</div></div>
+                </div>
+            </div>        
+            <div id="player-hand">
+                <div class="card disabled"><img src='cards/KS.svg'></img></div>
+                <div class="card">BZ</div>
+                <div class="card">OZ</div>
+                <div class="card">OZ</div>
+                <div class="card">OZ</div>
+                <div class="card">OZ</div>
+                <div class="card">OZ</div>
+                <div class="card">OZ</div>
+                <div class="card">OZ</div>
+                <div class="card">OZ</div>
+                <div class="card">OZ</div>
+                <div class="card">OZ</div>
+                <div class="card">OZ</div>
+                <div class="card">OZ</div>            
             </div>
 
-        </div>        
-        <div id="player-hand">
-            <div class="card disabled"><img src='cards/KS.svg'></img></div>
-            <div class="card">BZ</div>
-            <div class="card">OZ</div>
-            <div class="card">OZ</div>
-            <div class="card">OZ</div>
-            <div class="card">OZ</div>
-            <div class="card">OZ</div>
-            <div class="card">OZ</div>
-            <div class="card">OZ</div>
-            <div class="card">OZ</div>
-            <div class="card">OZ</div>
-            <div class="card">OZ</div>
-            <div class="card">OZ</div>
-            <div class="card">OZ</div>            
-        </div>
-
-    
-        <div id="dog-hand"></div>
         
+            <div id="dog-hand"></div>
+            
+        </div>
     </div>
 
     <script type="module" src="scripts/card-utils.js"></script>
