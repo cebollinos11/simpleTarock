@@ -10,7 +10,7 @@ const trickResult = document.getElementById('trick-result');
 const testbutton = document.getElementById("test");
 const trickcenter = document.getElementById("trick-center");
 
-testbutton.onclick = function(){  };
+
 
 let trickSlots = []
 let numPlayers = -1;
