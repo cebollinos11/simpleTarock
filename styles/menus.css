@@ -1,37 +1,48 @@
-#bid {
-    position: absolute;
-    width: 80%;
-    height: 70%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -70%);
-    display: block;
-    align-content: space-evenly;
-    align-items: start;
-    justify-content: start;
-    padding: 5px;
-    visibility:hidden ;
-  }
-
-  #bid > div{
-    height: 20%;
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    text-align: center;
-    padding-left: 5%;
-    gap: 5%;
-    
-  }
-
-  #bid > div > button{
-       width: 33%;
-       background-color: goldenrod;
-  }
-
-  #bid > div:last-child > button{
-    width: 33%;
-    background-color: red;
+.buttonpanel, .trump-panel {
+  position: absolute;
+  width: 80%;
+  height: 70%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-content: space-evenly;
+  align-items: start;
+  justify-content: start;
+  padding: 5px;
+  overflow: auto;
+  background-color: mediumseagreen;
+  visibility: hidden;
 }
 
+.trump-panel > p {
+  height: 14%;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
 
+.trump-panel > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    box-sizing: border-box;
+    height: 14%;
+    gap: 5%;
+    width: 100%;
+}
+
+.trump-panel > div > button {
+  width: 30%;
+  background-color: goldenrod;
+}
+
+.trump-panel > div:last-child > button {
+  background-color: red;
+}
+
+#bid {
+  visibility: hidden;
+}
