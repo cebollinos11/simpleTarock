@@ -34,6 +34,18 @@ game.initializeDeck();
 game.dealCards();
 game.randomizeDealer();
 
+//ask for pick trump
+_view.showChooseTrump(callbackChosenTrump);
+
+function callbackChosenTrump(trump)
+{
+    console.log("start");
+    console.log(trump);
+    console.log("end");
+    game.setTrump(trump);
+}
+
+
 async function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }

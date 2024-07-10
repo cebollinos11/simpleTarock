@@ -27,6 +27,13 @@ class CardGame
         this.currentPlayerIndex = 0;
         this.currentTrickStarterIndex = 0;
     }
+
+    setTrump(trump)
+    {
+        this.currentTrump = trump;        
+        this.currentTrick = new Trick(this.numPlayers,this.currentTrump);
+        console.log(`Model: trump set to ${trump}`)
+    }
     givePriority()
     {
         if(this.players[this.currentPlayerIndex].isAi)
