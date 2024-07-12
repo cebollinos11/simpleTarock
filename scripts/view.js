@@ -217,6 +217,6 @@ const b1 = new resDTO.Bonus("big dick",8,true);
 const b2 = new resDTO.Bonus("small dick",2,false);
 let blist = [b1,b2];
 
-const res = new resDTO.ResultDTO(5,11,4,30,blist,2,20);
+const res = new resDTO.ResultDTO(5,11,4,30,blist,2,20,2,10);
 
-// resultPanel.init(res);
+ //resultPanel.init(res);

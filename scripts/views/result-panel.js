@@ -10,7 +10,7 @@ export function init(data)
     parent.innerHTML = "";
     //fill out content
     const title = document.createElement('p');
-    title.innerText = "Results";
+    title.innerText = "Results for Round "+data.roundNumber+ " of "+data.maxRounds;
     parent.appendChild(title);
 
     parent.appendChild(simpleTable(data));
@@ -37,6 +37,8 @@ export function init(data)
     parent.style.visibility = "hidden";
     
 });
+
+    parent.style.visibility = "visible";
 }
 export function setCallback(newcallback)
 {
@@ -51,9 +53,9 @@ function simpleTable(resultDTO)
 {
     const table = document.createElement('table');
 
-    let generalVibe = (resultDTO.roundsWon *2)>resultDTO.totalRounds ? "good":"bad";
+    let generalVibe = (resultDTO.tricksWon *2)>resultDTO.totalRounds ? "good":"bad";
 
-    table.appendChild(generateRow("Tricks won",resultDTO.roundsWon+"/"+resultDTO.totalRounds,generalVibe));
+    table.appendChild(generateRow("Tricks won",resultDTO.tricksWon+"/"+resultDTO.totalRounds,generalVibe));
     table.appendChild(generateRow("Multiplier", "x"+resultDTO.multiplier,"empty"));
     table.appendChild(generateRow("Score", resultDTO.roundScore,generalVibe));
     
