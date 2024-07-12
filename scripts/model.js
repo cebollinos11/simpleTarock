@@ -24,8 +24,9 @@ class CardGame
     {
         this.currentTrump = "hearts";
         this.currentTrick = new Trick(this.numPlayers,this.currentTrump);
-        this.currentPlayerIndex = 0;
-        this.currentTrickStarterIndex = 0;
+        
+        this.currentPlayerIndex = this.numPlayers-1;
+        this.currentTrickStarterIndex = this.numPlayers-1;
     }
 
     setTrump(trump)
