@@ -53,3 +53,21 @@
 #bid, #choose-bonus, #choose-trump {
   visibility: hidden;
 }
+
+#result-panel{
+  visibility: hidden;
+}
+.results-table{
+  width: 100%;
+  table-layout: fixed;
+}
+
+.results-table tr:nth-child(odd){background-color: #f2f2f21e;}
+.results-table .good{
+  background-color: green;
+}
+.results-table .bad{
+  background-color: red;
+}.results-table .neutral{
+  background-color: grey;
+}

@@ -2,8 +2,10 @@
 
 import TableModule from "./classes/TableModule.js";
 import * as cardUtils from "./card-utils.js";
-import * as chooseTrump from "./views/trump-menu.js"
-import * as bonusMenu from "./views/bonus-menu.js"
+import * as chooseTrump from "./views/trump-menu.js";
+import * as bonusMenu from "./views/bonus-menu.js";
+import * as resultPanel from "./views/result-panel.js";
+import * as resDTO from "./classes/resultDTO.js";
 
 const playerHandElement = document.getElementById('player-hand');
 const dogCardsElement = document.getElementById('dog-hand');
@@ -143,10 +145,7 @@ function renderTrick(currentTrickCards,lastCardPlayed)
             }
 
     }
-
-    trickcenter.style.visibility="visible";
-
-    
+    trickcenter.style.visibility="visible";    
 }
 
 function getAnimationDirection(playerIndex)
@@ -210,3 +209,14 @@ export {
     showChooseTrump,
     showBonusMenu
 };
+
+
+//test
+
+const b1 = new resDTO.Bonus("big dick",8,true);
+const b2 = new resDTO.Bonus("small dick",2,false);
+let blist = [b1,b2];
+
+const res = new resDTO.ResultDTO(5,11,4,30,blist,2,20);
+
+// resultPanel.init(res);

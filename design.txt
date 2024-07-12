@@ -35,3 +35,17 @@ REVIEW_SCORE_GAME
 animate cards into trick
 animate who won a trick
 show tricks after player plays
+
+
+End of round:
+
+Tricks won: 5/11 (red or green color)
+Multiplier: x2
+Score: -2
+King bonus: 2 (red or green)
+Arrivaz bonus: -2 (red or green)
+Total for round: 2 
+
+Accumulated score = 4
+
+[Next Round]
