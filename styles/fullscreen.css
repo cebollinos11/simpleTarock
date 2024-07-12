@@ -1,0 +1,32 @@
+
+body, ::backdrop {
+    background: #000000;
+}
+#fullscreen-button {
+    position: absolute;
+    top:  8px;
+    right:  8px;
+    background: rgba(238, 225, 225, 0.418);
+    border:  0;
+    width:  40px;
+    height:  40px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    transition:  transform .3s;
+    cursor:  pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#fullscreen-button:hover {
+    transform: scale(1.125);
+}
+#fullscreen-button svg:nth-child(2) { 
+    display: none;
+}
+[fullscreen] #fullscreen-button svg:nth-child(1) {
+    display: none;
+}
+[fullscreen] #fullscreen-button svg:nth-child(2) {
+    display: inline-block;
+}
