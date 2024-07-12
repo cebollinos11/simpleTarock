@@ -24,7 +24,7 @@ async function playToTrick(index)
     _view,_view.renderPlayerHand(game.getPlayerHand(),null,null,[]);
     _view.renderTrick(game.currentTrick.cards,game.currentTrick.lastCardPlayed);
     await delay(_DELAY_MID);
-    await gameloop();
+    await ExecuteGameLoop();
 }
 
 const nPlayers = 4
@@ -93,7 +93,12 @@ async function gameloop() {
     _view.showRoundScores();
 
 }
-await gameloop();
+
+async function ExecuteGameLoop()
+{
+    await gameloop()
+}
+await ExecuteGameLoop();
 // _view.renderPlayerHand(game.getPlayerHand(), playToTrick);
 // _view.renderDog(game.getDogHand(), tradeWithHand);
 
