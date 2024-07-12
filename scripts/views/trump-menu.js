@@ -1,7 +1,11 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Get all the buttons inside the trump-panel
-    const buttons = document.querySelectorAll("#choose-trump  button");
-    const parent = document.getElementById("choose-trump");
+let parent = null
+let callback = null;  
+
+export function init()
+{
+  const buttons = document.querySelectorAll("#choose-trump  button");
+    parent = document.getElementById("choose-trump");
+    console.log("set parent");
     // Add click event listener to each button
     buttons.forEach(button => {
       button.addEventListener("click", function() {
@@ -14,10 +18,11 @@ document.addEventListener("DOMContentLoaded", function() {
         callback(suit);
       });
     });
-  });
+}
 
-let callback = null;  
 export function setCallback(newcallback)
 {
+    console.log("use parent");
+    parent.style.visibility = "visible";
     callback = newcallback;
 }

@@ -3,6 +3,7 @@
 import TableModule from "./classes/TableModule.js";
 import * as cardUtils from "./card-utils.js";
 import * as chooseTrump from "./views/trump-menu.js"
+import * as bonusMenu from "./views/bonus-menu.js"
 
 const playerHandElement = document.getElementById('player-hand');
 const dogCardsElement = document.getElementById('dog-hand');
@@ -188,7 +189,14 @@ function showRoundScores()
 
 function showChooseTrump(callback)
 {
+    chooseTrump.init();
     chooseTrump.setCallback(callback);
+}
+
+function showBonusMenu(callback)
+{
+    bonusMenu.init();
+    bonusMenu.setCallback(callback)
 }
 
 export {
@@ -199,5 +207,6 @@ export {
     renderTrickStatus,
     showRoundScores,
     animateTrickTaker,
-    showChooseTrump
+    showChooseTrump,
+    showBonusMenu
 };

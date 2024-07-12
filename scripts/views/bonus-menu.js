@@ -1,4 +1,15 @@
-document.getElementById('start-playing').addEventListener('click', function() {
+let parent = null
+let callback = null;  
+
+
+
+export function init()
+{
+    parent = document.getElementById("choose-bonus");
+
+    document.getElementById('start-playing').addEventListener('click', function() {
+    
+    
     // Get all checkboxes inside the 'choose-bonus' div
     const checkboxes = document.querySelectorAll('#choose-bonus input[type="checkbox"]');
     // Initialize an array to hold the names of checked options
@@ -11,11 +22,16 @@ document.getElementById('start-playing').addEventListener('click', function() {
         }
     });
     // Call the function with the list of checked options
-    handleCheckedOptions(checkedOptions);
+    callback(checkedOptions);
+    parent.style.visibility = "hidden";
+    
 });
+}
+export function setCallback(newcallback)
+{
+    console.log("setting bonus callback");
+    console.log(newcallback);
+    parent.style.visibility = "visible";
+    callback = newcallback;
 
-function handleCheckedOptions(options) {
-    // This function will receive the list of checked options
-    console.log('Checked options:', options);
-    // Perform any other actions with the checked options here
 }

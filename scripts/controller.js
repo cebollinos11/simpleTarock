@@ -30,6 +30,8 @@ async function playToTrick(index)
 const nPlayers = 4
 const game = new _model.CardGame(nPlayers);
 _view.initialize(nPlayers);
+
+//new round
 game.initializeDeck();
 game.dealCards();
 game.randomizeDealer();
@@ -43,8 +45,16 @@ function callbackChosenTrump(trump)
     console.log(trump);
     console.log("end");
     game.setTrump(trump);
+
+    //ask for bonus
+    _view.showBonusMenu(callbackBonusMenu)
 }
 
+async function callbackBonusMenu(listOfBonus)
+{
+    console.log(listOfBonus)
+    await ExecuteGameLoop();
+}
 
 async function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -98,7 +108,6 @@ async function ExecuteGameLoop()
 {
     await gameloop()
 }
-await ExecuteGameLoop();
 // _view.renderPlayerHand(game.getPlayerHand(), playToTrick);
 // _view.renderDog(game.getDogHand(), tradeWithHand);
 
