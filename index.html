@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="styles/cards.css">
     <link rel="stylesheet" href="styles/menus.css">
     <link rel="stylesheet" href="styles/fullscreen.css">
-
-
 </head>
 <body>
     <div class="container">
@@ -60,6 +58,25 @@
                     </div>
 
                 </div>
+
+                <div id="choose-bonus" class="trump-panel"><p>Choose any side challenges</p>
+                    <label>
+                        <input type="checkbox" name="king">
+                        Win the last Trick with a King (2 points)
+                    </label>
+                    <label>
+                        <input type="checkbox" name="pagat">
+                        Win the last Trick with an Ace (4 points)
+                    </label>
+                    <label>
+                        <input type="checkbox" name="arrivaz">
+                        Win the last 3 Tricks (8 points)
+                    </label>
+                    <div>
+                        <button id="start-playing">Start</button>
+                    </div>
+
+                </div>
                 <div id="trick-center">
                     <div class="cardslot"  id="cardslot1"><div class="card disabled animate-left"></div></div>                
                     <div class="cardslot"  id="cardslot2"><div class="card animate-top"></div></div>
@@ -99,6 +116,8 @@
     <script type="module" src="scripts/view.js"></script>
     <script type="module" src="scripts/controller.js"></script>
     <script type="module" src="scripts/views/trump-menu.js"></script>
+    <script type="module" src="scripts/views/bonus-menu.js"></script>
+
     <script type="module" src="scripts/views/fullscreen.js"></script>
 
 

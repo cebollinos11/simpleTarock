@@ -16,6 +16,13 @@
   z-index: 50;
 }
 
+#choose-bonus > div > button{
+  background-color: green;
+  justify-content: center;
+    position: absolute;
+    bottom: 5px;
+}
+
 .trump-panel > p {
   height: 14%;
   display: flex;
@@ -43,6 +50,6 @@
   background-color: red;
 }
 
-#bid {
+#bid, #choose-bonus, #choose-trump {
   visibility: hidden;
 }
