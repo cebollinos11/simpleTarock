@@ -22,6 +22,7 @@ class CardGame
         this.currentTrump = null;
         this.currentRound = null;
         this.roundCount = 0;
+        this.multiplier = 0;
     }
     randomizeDealer()
     {
@@ -30,6 +31,12 @@ class CardGame
         
         this.currentPlayerIndex = this.numPlayers-1;
         this.currentTrickStarterIndex = this.numPlayers-1;
+    }
+
+    setMultiplier(stringInt)
+    {
+        this.multiplier = Number(stringInt);
+        console.log("Multiplier set to: "+stringInt);
     }
 
     newRound()

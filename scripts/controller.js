@@ -56,7 +56,12 @@ function callbackContract(selectedContract)
         newRound();
         return;
     }
-    //if not handle dog/skip dog
+    
+    //set multiplier
+    game.setMultiplier(selectedContract);
+
+    //handle dog/skip dog
+
 
     //temporary, go to trump selection
     _view.showChooseTrump(callbackChosenTrump);
