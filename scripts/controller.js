@@ -32,15 +32,30 @@ const game = new _model.CardGame(nPlayers);
 _view.initialize(nPlayers);
 
 //new round
-game.initializeDeck();
-game.dealCards();
-game.randomizeDealer();
-//show hand
-_view.renderPlayerHand(game.getPlayerHand(),null);
+function newRound()
+{
+    game.initializeDeck();
+    game.dealCards();
+    game.randomizeDealer();
+    //show hand
+    _view.renderPlayerHand(game.getPlayerHand(),null);
 
-//ask for pick trump
+    //as for contract
+    _view.showChooseContract(callbackContract);
+    //handle dog
+    
+    //ask for pick trump
+    
+    //_view.showChooseTrump(callbackChosenTrump);
+}    
 
-_view.showChooseTrump(callbackChosenTrump);
+function callbackContract(selectedContract)
+{
+    console.log(selectedContract);
+    //if pass show scores and restart round
+
+    //if not handle dog/skip dog
+}
 
 function callbackChosenTrump(trump)
 {
@@ -113,5 +128,5 @@ async function ExecuteGameLoop()
 }
 // _view.renderPlayerHand(game.getPlayerHand(), playToTrick);
 // _view.renderDog(game.getDogHand(), tradeWithHand);
-
+newRound();
 

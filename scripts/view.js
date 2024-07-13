@@ -6,6 +6,7 @@ import * as chooseTrump from "./views/trump-menu.js";
 import * as bonusMenu from "./views/bonus-menu.js";
 import * as resultPanel from "./views/result-panel.js";
 import * as resDTO from "./classes/resultDTO.js";
+import * as bidMenu from "./views/bid-menu.js"
 
 const playerHandElement = document.getElementById('player-hand');
 const dogCardsElement = document.getElementById('dog-hand');
@@ -185,6 +186,11 @@ function showRoundScores()
 
 }
 
+export function showChooseContract(callback)
+{
+    bidMenu.init();
+    bidMenu.setCallback(callback);
+} 
 
 function showChooseTrump(callback)
 {
@@ -207,7 +213,8 @@ export {
     showRoundScores,
     animateTrickTaker,
     showChooseTrump,
-    showBonusMenu
+    showBonusMenu,
+    
 };
 
 
