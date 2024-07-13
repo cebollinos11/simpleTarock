@@ -23,6 +23,7 @@ class CardGame
         this.currentRound = null;
         this.roundCount = 0;
         this.multiplier = 0;
+        this.dogSize = 0;
     }
     randomizeDealer()
     {
@@ -33,11 +34,36 @@ class CardGame
         this.currentTrickStarterIndex = this.numPlayers-1;
     }
 
+    setDogSize(n)
+    {
+        this.dogsize = n;
+        this.dogHand = this.dogHand.slice(0,n);
+        console.log("dogsize set to "+this.dogHand.length);
+    }
     setMultiplier(stringInt)
     {
         this.multiplier = Number(stringInt);
         console.log("Multiplier set to: "+stringInt);
+        
+        let dogsize = 2;
+        switch (this.multiplier) {
+            case 1:
+                dogsize = 3;
+                break;
+            case 3: 
+                dogsize = 1;
+                break;
+            case 4:
+                dogsize = 0;
+                break;
+            default:
+                dogsize = 2;
+                break;
+        }
+        this.setDogSize(dogsize);
     }
+
+
 
     newRound()
     {

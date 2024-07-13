@@ -98,9 +98,10 @@ function showAndMoveTrickResult(div,moveto) {
     }, 600); // 500ms delay + 2000ms animation time
 }
 
-function renderDog(dogHand, tradeWithHand, lastUpdated = null) {
-    const dogCardsNumber = 4;
+function renderDog(dogHand, tradeWithHand, lastUpdated = null, dogsize) {
+    
     dogCardsElement.innerHTML = '';
+    dogCardsElement.style.visibility = "visible";
 
     dogHand.forEach((card, index) => {
         const cardElement = renderCard(card);
@@ -112,14 +113,14 @@ function renderDog(dogHand, tradeWithHand, lastUpdated = null) {
     });
 
     if (dogHand.length < 4) {
-        for (let i = 0; i < dogCardsNumber - dogHand.length; i++) {
+        for (let i = 0; i < dogsize - dogHand.length; i++) {
             const cardElement = document.createElement('div');
             cardElement.classList.add('card');
             dogCardsElement.appendChild(cardElement);
         }
     }
 
-    if (dogCardsNumber === dogHand.length) {
+    if (dogsize === dogHand.length) {
         const dogCommitElement = document.createElement('button');
         dogCommitElement.innerText = "Commit";
         dogCardsElement.appendChild(dogCommitElement);

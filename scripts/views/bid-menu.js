@@ -54,10 +54,10 @@ function createBidPanel(parentId, roundCount) {
     
     // Array of bid options
     const bids = [
-        { bid: '3', text: 'Help 3', multiplier: 'x1' },
+        { bid: '1', text: 'Help 3', multiplier: 'x1' },
         { bid: '2', text: 'Help 2', multiplier: 'x2' },
-        { bid: '1', text: 'Help 1', multiplier: 'x3' },
-        { bid: '0', text: 'No help', multiplier: 'x4' },
+        { bid: '3', text: 'Help 1', multiplier: 'x3' },
+        { bid: '4', text: 'No help', multiplier: 'x4' },
         { bid: 'pass', text: 'Deal again', multiplier: 'Penalization x1' }
     ];
     
