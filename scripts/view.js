@@ -186,9 +186,9 @@ function showRoundScores()
 
 }
 
-export function showChooseContract(callback)
+export function showChooseContract(callback,roundCount)
 {
-    bidMenu.init();
+    bidMenu.init(roundCount);
     bidMenu.setCallback(callback);
 } 
 

@@ -34,14 +34,12 @@ _view.initialize(nPlayers);
 //new round
 function newRound()
 {
-    game.initializeDeck();
-    game.dealCards();
-    game.randomizeDealer();
+    game.newRound();
     //show hand
     _view.renderPlayerHand(game.getPlayerHand(),null);
 
     //as for contract
-    _view.showChooseContract(callbackContract);
+    _view.showChooseContract(callbackContract,game.roundCount);
     //handle dog
     
     //ask for pick trump
@@ -53,7 +51,11 @@ function callbackContract(selectedContract)
 {
     console.log(selectedContract);
     //if pass show scores and restart round
-
+    if(selectedContract == "pass")
+    {
+        newRound();
+        return;
+    }
     //if not handle dog/skip dog
 
     //temporary, go to trump selection

@@ -1,6 +1,7 @@
 // model.js
 
 import * as cardUtils from "./card-utils.js";
+import { Round } from "./classes/round.js";
 import { Trick } from "./classes/trick.js";
 
 
@@ -18,7 +19,9 @@ class CardGame
         this.dogHand = [];
         this.currentPlayerIndex = 0;
         this.currentTrickStarterIndex = 0;        
-        this.currentTrump = null
+        this.currentTrump = null;
+        this.currentRound = null;
+        this.roundCount = 0;
     }
     randomizeDealer()
     {
@@ -27,6 +30,15 @@ class CardGame
         
         this.currentPlayerIndex = this.numPlayers-1;
         this.currentTrickStarterIndex = this.numPlayers-1;
+    }
+
+    newRound()
+    {
+        this.roundCount++;
+        this.currentRound = new Round();      
+        this.initializeDeck();
+        this.dealCards();
+        this.randomizeDealer();  
     }
 
     setTrump(trump)
