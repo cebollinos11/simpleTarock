@@ -35,8 +35,11 @@ _view.initialize(nPlayers);
 game.initializeDeck();
 game.dealCards();
 game.randomizeDealer();
+//show hand
+_view.renderPlayerHand(game.getPlayerHand(),null);
 
 //ask for pick trump
+
 _view.showChooseTrump(callbackChosenTrump);
 
 function callbackChosenTrump(trump)
