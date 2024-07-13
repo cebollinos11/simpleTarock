@@ -55,6 +55,10 @@ function callbackContract(selectedContract)
     //if pass show scores and restart round
 
     //if not handle dog/skip dog
+
+    //temporary, go to trump selection
+    _view.showChooseTrump(callbackChosenTrump);
+
 }
 
 function callbackChosenTrump(trump)
