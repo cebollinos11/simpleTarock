@@ -169,7 +169,6 @@ class CardGame
         this.dogHand = this.deck.slice(0, dogSize);
         this.dogHand = cardUtils.sortCardsBySuit(this.dogHand);
         this.deck = this.deck.slice(4);
-        console.log(this);
 
     }
 

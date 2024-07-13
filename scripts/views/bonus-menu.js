@@ -29,7 +29,6 @@ export function init()
 }
 export function setCallback(newcallback)
 {
-    console.log("setting bonus callback");
     console.log(newcallback);
     parent.style.visibility = "visible";
     callback = newcallback;

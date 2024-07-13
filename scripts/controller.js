@@ -59,9 +59,6 @@ function callbackContract(selectedContract)
 
 function callbackChosenTrump(trump)
 {
-    console.log("start");
-    console.log(trump);
-    console.log("end");
     game.setTrump(trump);
 
     //ask for bonus
