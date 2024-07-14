@@ -216,6 +216,8 @@ class CardGame
     
         this.dogHand = this.deck.slice(0, dogSize);
         this.dogHand = cardUtils.sortCardsBySuit(this.dogHand);
+        //set dog cards as owned by the player to prevent bugs
+        this.dogHand.forEach(c=>{c.ownerIndex = 0});
         this.deck = this.deck.slice(4);
 
     }
