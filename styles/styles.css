@@ -33,22 +33,8 @@ html,body,#wrapper {
     align-items: center; 
     position: relative;
 }
-#dog-parent{
-    background-color: #6d54ff;
-    z-index: 600;
-    visibility: hidden;
-}
-#dog-hand{
-    background-color: #e74c3c; /* Example color */
-    height: 20%;
-    width: 80%;
-    position: absolute;
-    top: 40%; /* Center vertically in the center-area */
-    left: 10%; /* Center horizontally in the center-area */
-    display: flex;
-    justify-content: center;
-    z-index: 100;
-}
+
+
 
 #player-hand{
     background-color: #25915e; /* Example color */

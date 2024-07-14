@@ -21,6 +21,9 @@
   justify-content: center;
     position: absolute;
     bottom: 5px;
+    height: 10%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .trump-panel > p {
@@ -43,7 +46,8 @@
 
 .trump-panel > div > button {
   width: 30%;
-  background-color: goldenrod;
+  background-color: rgb(199, 198, 196);
+  height: 100%;
 }
 
 .trump-panel > div:last-child > button {
@@ -77,4 +81,21 @@
   bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
+}
+
+#dog-parent{
+  z-index: 600;
+  visibility: hidden;
+}
+
+#dog-hand{
+  background-color: #1d7238; /* Example color */
+  height: 20%;
+  width: 80%;
+  position: absolute;
+  top: 40%; /* Center vertically in the center-area */
+  left: 10%; /* Center horizontally in the center-area */
+  display: flex;
+  justify-content: center;
+  z-index: 100;
 }
