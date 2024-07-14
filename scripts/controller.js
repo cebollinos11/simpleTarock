@@ -37,7 +37,7 @@ function newRound()
 {
     game.newRound();
     //show hand
-    _view.renderPlayerHand(game.getPlayerHand(),null);
+    _view.renderPlayerHand(game.getPlayerHand(),nocallback,null,game.getPlayerHand());
 
     //as for contract
     _view.showChooseContract(callbackContract,game.roundCount);
@@ -47,6 +47,11 @@ function newRound()
     
     //_view.showChooseTrump(callbackChosenTrump);
 }    
+
+function nocallback()
+{
+    
+}
 
 function callbackContract(selectedContract)
 {
