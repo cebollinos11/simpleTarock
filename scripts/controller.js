@@ -31,6 +31,7 @@ const nPlayers = 4
 const game = new _model.CardGame(nPlayers);
 _view.initialize(nPlayers);
 
+
 //new round
 function newRound()
 {

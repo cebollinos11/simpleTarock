@@ -49,3 +49,8 @@ Total for round: 2
 Accumulated score = 4
 
 [Next Round]
+
+no black/white at the beginning
+fix colors on iphone
+make buttons bigger
+show slots on dog / do not allow put in dog if dog is maxed out

@@ -62,3 +62,15 @@ export const suitImage = {
     }
     return winningCard;
 }
+
+export function renderCard(card) {
+    const cardElement = document.createElement('div');
+    cardElement.classList.add('card');
+    cardElement.classList.add(suitImage[card.suit].color);
+
+    var imgElement = document.createElement('img');
+    imgElement.src = `cards/${card.rank}${suitImage[card.suit].imageCode}.svg`;
+    cardElement.appendChild(imgElement);
+
+    return cardElement;
+}
