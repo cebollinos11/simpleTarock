@@ -60,13 +60,16 @@ function callbackContract(selectedContract)
     //set multiplier
     game.setMultiplier(selectedContract);
 
-    //handle dog/skip dog
-    _view.setDogConfirmCallback(dogConfirmCallback);
-    _view.renderDog(game.getDogHand(),tradeWithHand,null,game.dogsize);
-    _view.renderPlayerHand(game.getPlayerHand(),tradeWithDog,null,game.getPlayerHand());
-
-    //temporary, go to trump selection
-    // _view.showChooseTrump(callbackChosenTrump);
+    if(game.dogsize == 0)
+    {//skip dog
+        dogConfirmCallback()
+    }
+    {
+        //show dog
+        _view.setDogConfirmCallback(dogConfirmCallback);
+        _view.renderDog(game.getDogHand(),tradeWithHand,null,game.dogsize);
+        _view.renderPlayerHand(game.getPlayerHand(),tradeWithDog,null,game.getPlayerHand());
+    }
 
 }
 

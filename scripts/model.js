@@ -23,7 +23,7 @@ class CardGame
         this.currentRound = null;
         this.roundCount = 0;
         this.multiplier = 0;
-        this.dogSize = 0;
+        this.dogsize = 0;
     }
     randomizeDealer()
     {
@@ -245,6 +245,7 @@ class CardGame
 class Player {
     constructor(isAi) {
      this.isAi = isAi;
+     //this.isAi = true;
      this.hand = [];
      this.score = 0;
      this.tricksWon = 0;
