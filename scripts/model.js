@@ -134,6 +134,9 @@ class CardGame
     completeTrick() //called by controller
     {
         const winCard = this.calculateTrickWinner();
+        console.log(winCard);
+        console.log(winCard.ownerIndex);
+        console.log(this.players[winCard.ownerIndex]);
         this.players[winCard.ownerIndex].tricksWon++;
         this.currentTrick.clear();
         //TODO select new starter

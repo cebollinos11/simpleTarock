@@ -19,7 +19,7 @@ const trickcenter = document.getElementById("trick-center");
 
 let trickSlots = []
 let numPlayers = -1;
-
+let confirmDogCallback = null;
 function renderCard(card) {
     const cardElement = document.createElement('div');
     cardElement.classList.add('card');
@@ -100,6 +100,7 @@ function showAndMoveTrickResult(div,moveto) {
 
 function renderDog(dogHand, tradeWithHand, lastUpdated = null, dogsize) {
     
+    console.log(dogsize);   
     dogCardsElement.innerHTML = '';
     dogCardsElement.style.visibility = "visible";
 
@@ -123,8 +124,14 @@ function renderDog(dogHand, tradeWithHand, lastUpdated = null, dogsize) {
     if (dogsize === dogHand.length) {
         const dogCommitElement = document.createElement('button');
         dogCommitElement.innerText = "Commit";
+        dogCommitElement.addEventListener('click', () => {confirmDogCallback();dogCardsElement.style.visibility="hidden";   });
         dogCardsElement.appendChild(dogCommitElement);
     }
+}
+
+function setDogConfirmCallback(callback)
+{
+    confirmDogCallback = callback
 }
 
 //_view.renderTrick(game.currentTrick,true);
@@ -215,6 +222,7 @@ export {
     animateTrickTaker,
     showChooseTrump,
     showBonusMenu,
+    setDogConfirmCallback
     
 };
 

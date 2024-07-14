@@ -8,13 +8,13 @@ const _DELAY_MID = 500;
 
 function tradeWithDog(index) {
     const card = game.tradeCardFromPlayerToDog(index);
-    _view.renderDog(game.getDogHand(), tradeWithHand, card);
+    _view.renderDog(game.getDogHand(), tradeWithHand, card,game.dogsize);
     _view.renderPlayerHand(game.getPlayerHand(), tradeWithDog,null,game.getPlayerHand());
 }
 
 function tradeWithHand(index) {
     const card = game.tradeCardFromDogToPlayer(index);
-    _view.renderDog(game.getDogHand(), tradeWithHand);
+    _view.renderDog(game.getDogHand(), tradeWithHand,null,game.dogsize);
     _view.renderPlayerHand(game.getPlayerHand(), tradeWithDog, card,game.getPlayerHand());
 }
 
@@ -61,12 +61,18 @@ function callbackContract(selectedContract)
     game.setMultiplier(selectedContract);
 
     //handle dog/skip dog
-    _view.renderDog(game.getDogHand(),tradeWithHand);
+    _view.setDogConfirmCallback(dogConfirmCallback);
+    _view.renderDog(game.getDogHand(),tradeWithHand,null,game.dogsize);
     _view.renderPlayerHand(game.getPlayerHand(),tradeWithDog,null,game.getPlayerHand());
 
     //temporary, go to trump selection
     // _view.showChooseTrump(callbackChosenTrump);
 
+}
+
+function dogConfirmCallback()
+{
+    _view.showChooseTrump(callbackChosenTrump);
 }
 
 function callbackChosenTrump(trump)
