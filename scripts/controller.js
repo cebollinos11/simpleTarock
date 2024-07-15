@@ -50,7 +50,7 @@ function newRound()
 
 function nocallback()
 {
-    
+
 }
 
 function callbackContract(selectedContract)
@@ -70,6 +70,7 @@ function callbackContract(selectedContract)
     {//skip dog
         dogConfirmCallback()
     }
+    else
     {
         //show dog
         _view.setDogConfirmCallback(dogConfirmCallback);
