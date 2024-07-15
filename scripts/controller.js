@@ -3,7 +3,7 @@
 import * as _model from './model.js';
 import * as _view from './view.js';
 
-const _DELAY_MID = 500;
+const _DELAY_MID = 1;
 
 
 function tradeWithDog(index) {
@@ -142,8 +142,9 @@ async function gameloop() {
         }
     }
 
+    const resultsDTO = game.resultReport;
     // Handle end of round logic here, like scoring and starting a new round
-    _view.showRoundScores();
+    _view.showRoundScores(resultsDTO);
 
 }
 

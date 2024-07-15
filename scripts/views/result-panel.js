@@ -56,21 +56,24 @@ function simpleTable(resultDTO)
     let generalVibe = (resultDTO.tricksWon *2)>resultDTO.totalRounds ? "good":"bad";
 
     table.appendChild(generateRow("Tricks won",resultDTO.tricksWon+"/"+resultDTO.totalRounds,generalVibe));
+    table.appendChild(generateRow("Extra tricks",resultDTO.extraTricks,generalVibe))
     table.appendChild(generateRow("Multiplier", "x"+resultDTO.multiplier,"empty"));
     table.appendChild(generateRow("Score", resultDTO.roundScore,generalVibe));
     
-    if(resultDTO.listOfBonus!=null)
-    {
-        resultDTO.listOfBonus.forEach(element => {
-            table.appendChild(generateRow(element.displayName, (element.success?"":"-") + element.points,element.success?"good":"bad"));
+    let bonusUsed = 0;
+    resultDTO.listOfBonus.forEach(element => {
+            table.appendChild(generateRow(element.displayName, (element.success?"":"-") + element.points,element.success?"good":"bad")
+            
+        );
+        bonusUsed++;
 
-        });
+    });
 
-    }
-    else
+    if(bonusUsed ==0)
     {
-        table.appendChild(generateRow("Bonus", "None","red"));
+        table.appendChild(generateRow("Bonuses","0","none"));
     }
+
         
     table.appendChild(generateRow("Round total", resultDTO.totalForThisRound,resultDTO.totalForThisRound>0?"good":"bad"));
     table.appendChild(generateRow("Accumulated Score", resultDTO.accumulatedScore,"empty"));    

@@ -1,6 +1,7 @@
 // model.js
 
 import * as cardUtils from "./card-utils.js";
+import { ResultDTO } from "./classes/resultDTO.js";
 import { Round } from "./classes/round.js";
 import { Trick } from "./classes/trick.js";
 
@@ -24,6 +25,8 @@ class CardGame
         this.roundCount = 0;
         this.multiplier = 0;
         this.dogsize = 0;
+        this.resultReport = null;
+        this.accumulatedScore = 0;
     }
     randomizeDealer()
     {
@@ -120,15 +123,21 @@ class CardGame
 
     calculateRoundScore()
     {
+
         const [attack,defense] = this.getAttackDefenseTricks();
-        if(attack>defense)
-        {
-            console.log("Player won!");
-        }
-        else
-        {
-            console.log("Player lost!");
-        }
+        const playerWon = attack>defense;
+
+
+        //todo add extra bonus if over 6 tricks
+        const totaltricks = attack+defense;
+        const halftricks = Math.ceil(totaltricks/2);
+        const extratricks = Math.max(attack,defense)-halftricks;
+        const basicScore = (playerWon?1:-1)*this.multiplier*(2+extratricks);
+        //todo, the view of results should have base + extra tricks bonus
+        let bonusScore = 0;
+        const roundScore = basicScore+bonusScore;
+        this.accumulatedScore += roundScore;
+        this.resultReport = new ResultDTO(attack,attack+defense,extratricks,this.multiplier,basicScore,[],roundScore,this.accumulatedScore,this.roundCount,100);
     }
 
     completeTrick() //called by controller
@@ -144,6 +153,7 @@ class CardGame
         //check for end of round
         if(this.players[0].hand.length==0)
         {
+            this.isRoundFinished = true;
             this.calculateRoundScore();
         }
         else
@@ -247,7 +257,7 @@ class CardGame
 class Player {
     constructor(isAi) {
      this.isAi = isAi;
-     //this.isAi = true;
+     this.isAi = true;
      this.hand = [];
      this.score = 0;
      this.tricksWon = 0;

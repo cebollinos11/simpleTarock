@@ -1,10 +1,11 @@
 export class ResultDTO
 {
-    constructor(tricksWon,totalRounds,multiplier,roundScore,listOfBonus,totalForThisRound,accumulatedScore,roundNumber,maxRounds)
+    constructor(tricksWon,totalRounds,extraTricks,multiplier,roundScore,listOfBonus,totalForThisRound,accumulatedScore,roundNumber,maxRounds)
 
     {
         this.tricksWon = tricksWon;
         this.totalRounds = totalRounds;
+        this.extraTricks = extraTricks;
         this.multiplier = multiplier;
         this.roundScore = roundScore;
         this.listOfBonus = listOfBonus;

@@ -186,9 +186,9 @@ function initialize(nPlayers)
     rDog.init();
 }
 
-function showRoundScores()
+function showRoundScores(res)
 {
-
+    resultPanel.init(res);
 }
 
 export function showChooseContract(callback,roundCount)
