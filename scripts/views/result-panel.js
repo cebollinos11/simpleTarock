@@ -33,7 +33,7 @@ export function init(data)
     //butt
 
     // Call the function with the list of checked options
-    callback(checkedOptions);
+    callback();
     parent.style.visibility = "hidden";
     
 });
@@ -42,9 +42,7 @@ export function init(data)
 }
 export function setCallback(newcallback)
 {
-    console.log("setting results callback");
-    console.log(newcallback);
-    parent.style.visibility = "visible";
+
     callback = newcallback;
 
 }

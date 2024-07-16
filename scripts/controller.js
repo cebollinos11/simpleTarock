@@ -3,7 +3,8 @@
 import * as _model from './model.js';
 import * as _view from './view.js';
 
-const _DELAY_MID = 1;
+const _DELAY_MID = 300;
+const _DELAY_LONG = 1000;
 
 
 function tradeWithDog(index) {
@@ -103,6 +104,11 @@ async function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function onResultsAccepted()
+{
+    newRound();
+}
+
 async function gameloop() {
     let escapeLoop = false
 
@@ -128,11 +134,10 @@ async function gameloop() {
 
         if (game.currentTrick.getCardsPlayed() === 4) {
             // Trick is complete
-            await delay(_DELAY_MID);
+            await delay(_DELAY_LONG);
             const winnerID = game.completeTrick(); // Handle end of trick (e.g., determine winner, collect cards)
             _view.animateTrickTaker(winnerID);
-            await delay(_DELAY_MID);
-            await delay(_DELAY_MID);
+            await delay(_DELAY_LONG);
             const [attack,defense] = game.getAttackDefenseTricks();
             _view.renderTrickStatus(attack,defense);
             await delay(_DELAY_MID);
@@ -142,9 +147,13 @@ async function gameloop() {
         }
     }
 
-    const resultsDTO = game.resultReport;
-    // Handle end of round logic here, like scoring and starting a new round
-    _view.showRoundScores(resultsDTO);
+    if(game.isRoundFinished==true)
+    {
+        
+        // Handle end of round logic here, like scoring and starting a new round
+        const resultsDTO = game.resultReport;
+        _view.showRoundScores(resultsDTO,onResultsAccepted);
+    }
 
 }
 

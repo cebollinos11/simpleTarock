@@ -186,8 +186,9 @@ function initialize(nPlayers)
     rDog.init();
 }
 
-function showRoundScores(res)
+function showRoundScores(res,callback)
 {
+    resultPanel.setCallback(callback);
     resultPanel.init(res);
 }
 

@@ -70,6 +70,10 @@ class CardGame
 
     newRound()
     {
+        this.players.forEach(p => {
+            p.tricksWon = 0;
+        });
+        this.isRoundFinished = false;
         this.roundCount++;
         this.currentRound = new Round();      
         this.initializeDeck();
@@ -257,7 +261,7 @@ class CardGame
 class Player {
     constructor(isAi) {
      this.isAi = isAi;
-     this.isAi = true;
+    //  this.isAi = true;
      this.hand = [];
      this.score = 0;
      this.tricksWon = 0;
