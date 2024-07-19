@@ -26,6 +26,7 @@
     height: 10%;
     left: 50%;
     transform: translateX(-50%);
+  
 }
 
 .trump-panel > p {
@@ -50,11 +51,17 @@
     width: 100%;
 }
 
-.trump-panel > div > button {
+.trump-panel > div > button , #confirm-dog {
   width: 30%;
   background-color: rgb(199, 198, 196);
   height: 100%;
+  border-radius: 10px;
 }
+
+#confirm-dog{
+  height: 15%;
+}
+
 
 .trump-panel > div:last-child > button {
   background-color: red;
@@ -105,3 +112,4 @@
   justify-content: center;
   z-index: 100;
 }
+
