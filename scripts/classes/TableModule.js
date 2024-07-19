@@ -15,6 +15,7 @@ export default class TableModule {
         table.border = '1';
         table.style.width = '100%';
         table.style.tableLayout = 'fixed';
+        table.style.borderCollapse = "collapse"
 
         // Generate table headers
         const thead = document.createElement('thead');

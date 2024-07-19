@@ -120,6 +120,7 @@
 
 .card > img{
     width: 100%;
+    box-shadow: 2px 2px 2px rgb(0, 0, 0)
 }
 
 #player-hand >.card > img:hover
